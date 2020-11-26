@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="jQuery.datetimepicker.min.css">
 
 </head>
+
 <body id="page-top">
   @include('layouts.header')
   <div id="wrapper">
@@ -59,9 +60,6 @@
 
   </div>
 <!-- ./wrapper -->
-
-
-
 </body>
 <!-- Edit Form AJAX -->
   <script type="text/javascript">

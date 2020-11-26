@@ -12,13 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |//Admin
 */
-Route::get('/', function () {
+Route::get('/main', function () {
     return view('home');
 });
-//Route:: get('login', function () {
+//Route:: get('/', function () {
   //  return view('login');
 //});
+
+
+//LOG-IN
 Route::get('login', 'LoginController@index');
+Route::POST('login', 'LoginController@index');
 
 //Kuadran:
 Route::get('kuadran.index', 'KuadranController@index');

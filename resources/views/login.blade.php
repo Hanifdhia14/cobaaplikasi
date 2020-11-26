@@ -12,7 +12,7 @@
     <script type="text/javascript" src="script.js">
 
     </script>
-      <title>login</title>
+      <title>E-AKIO </title>
   </head>
 <style media="screen">
   body{
@@ -70,46 +70,59 @@ label{
 <body class="form">
   <div class="container" >
     <div class="row justify-content-center">
-      <div class="from-content">
+      <div class="col-lg-8">
+        <div class="from-content">
 
-        <div class="card text-center shadow-lg p-3 mb-5 bg-white rounded" >
-          <img src="logo_asdp.PNG" class="rounded mx-auto d-block" width="600" height="200">
-          <h4 class="text-center"> Aplikasi Manajemen Kinerja Individu Organisasi </h4>
-            <h2 class="text-center font-italic"> Log In to <strong>AKIO</strong></h2>
+          <div class="card text-center shadow-lg p-3 mb-5 bg-white rounded" >
+            <img src="logo_asdp.PNG" class="rounded mx-auto d-block" width="600" height="200">
+            <h4 class="text-center"> Aplikasi Manajemen Kinerja Individu Organisasi </h4>
+              <h2 class="text-center font-italic"> Log In to <strong>AKIO</strong></h2>
 
-        <form method="POST" action="" class="need-validation" novalidate="">
-          @crsf
-          <div class="input-group flex-nowrap">
-            <div class="input-group-prepend "></div>
-              <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-          </div>
-        </form >
-        <form>
-          <div class="input-group flex-nowrap">
-            <div class="input-group-prepend"></div>
-              <input type="password" class="form-control" value="fakePSW" id="myinput" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
-          </div>
-        </form>
-            <div class="form-group form-check">
-              <div style="margin-right: 240px;margin-top: 20px;">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" onclick="myFunction()">
-                <label class="form-check-label" for="exampleCheck1">lihat Password</label>
+          <form method="POST" accept="{{url('login')}}" class="need-validation" novalidate="">
+            {{csrf_field()}}
+
+            <div class="input-group flex-nowrap">
+              <div class="input-group-prepend "></div>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required autocomplete="username" autofocus>
+                @error('username')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="input-group flex-nowrap">
+              <div class="input-group-prepend"></div>
+                <input type="password" class="form-control" value="" id="myinput" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping" required autocomplete="current-password">
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+              <div class="form-group form-check">
+                <div style="margin-right: 240px;margin-top: 20px;">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" onclick="myFunction()">
+                  <label class="form-check-label" for="exampleCheck1">lihat Password</label>
+                </div>
               </div>
 
-            </div>
-          <div class="input-group flex-nowrap">
-            <div class="field-wrapper">
-                <div style=" margin-left:350px;">
-                  <button type="button`button" class="btn btn-primary" value="">Log In</button>
+              <div class="input-group flex-nowrap" accesskey="">
+                <div class="col-mg-5">
+                    <div style=" margin-left:270pt;">
+                      <button type="submit" class="btn btn-primary" value="" href="" >Log In</button>
+                    </div>
                 </div>
+              </div>
+            </form>
+
+            <div class="center">
+              <small>© 2020 ALL Rights Reserved</small> <br>
+              <small>AKIO is a product of Earth Life.Id</small>
             </div>
 
           </div>
-          <div class="center">
-            <small>© 2020 ALL Rights Reserved</small> <br>
-            <small>AKIO is a product of Earth Life.Id</small>
-          </div>
-
         </div>
       </div>
       </div>
