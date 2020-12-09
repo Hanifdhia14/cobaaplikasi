@@ -65,7 +65,7 @@
                     <ul class="treeview-menu">
                         <h6 >Custom Utilities:</h6>
                       <li><a href="{{url('employee.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Employee</a></li>
-                      <li><a href="pages/UI/buttons.html" class="collapse-item"><i class="fa fa-circle-o"></i> Hak Akses</a></li>
+                      <li><a href="{{url('hakakses.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Hak Akses</a></li>
                     </ul>
                 </div>
             </div>
@@ -84,18 +84,20 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                 aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
+                <span>Report</span>
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="login.html">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                  <ul class="treeview-menu">
+
+                    <h6>Monitoring Screens:</h6>
+                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> KPI</a></li>
+                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> Employee</a></li>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>
+                    <a class="collapse-item" href="404.html"></a>
+                    <a class="collapse-item" href="blank.html"></a>
+                  </ul>
                 </div>
             </div>
         </li>

@@ -83,6 +83,7 @@ Route::get('employee.index', 'EmployeeController@index');
 
 
 //Hak Akses
+Route::get('hakakses.index', 'HakaksesController@index');
 
 //User
 Route::get('user.userhome', 'user.UserhomeController@index');

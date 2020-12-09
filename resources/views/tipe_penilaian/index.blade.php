@@ -9,7 +9,8 @@
     font-style: article;
   }
   button{
-    margin-top: 30pt;
+    margin-bottom:10pt;
+    margin-top: 20pt;
     margin-left: 50pt;
 
   }
@@ -20,7 +21,7 @@
   </style>
 
 <div ="container-fluid">
-  <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
         <h1>Tipe Penilaian <small>Imput Tipe Penilaian</small></h1>
 
@@ -61,32 +62,49 @@
     </div>
 
 
-      <div class="container">
-        <table class="table">
+
+        <table id="example" class="display" style="width:100%">
 
           <thead>
             <tr>
-              <th scope="col"class="text-center">No</th>
-              <th scope="col"class="text-center">Id</th>
-              <th scope="col"class="text-center">Tipe Penilaian</th>
-              <th scope="col"class="text-center">Aksi</th>
+              <th >No</th>
+              <th >Id</th>
+              <th >Tipe Penilaian</th>
+              <th >Aksi</th>
             </tr>
           </thead>
           <tbody>
           @foreach ($tipe_penilaian as $tp)
             <tr>
-              <th scope="row"class="text-center">{{$loop->iteration}}</th>
-              <td class="text-center">{{$tp->id}}</td>
-              <td class="text-center">{{$tp->tipe_penilaian}}</td>
-              <td class="text-center">
-                  <a href="" class="btn btn-primary"class="text-center"data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
-                  <a href="tipe_penilaian.index.destroy{{$tp->id }}" class="btn btn-danger"class="text-center">delete</a>
+              <th >{{$loop->iteration}}</th>
+              <td >{{$tp->id}}</td>
+              <td >{{$tp->tipe_penilaian}}</td>
+              <td >
+                  <a href="" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
+                  <a href="tipe_penilaian.index.destroy{{$tp->id }}" class="btn btn-danger">delete</a>
               </td>
             </tr>
           @endforeach
           </tbody>
+          <tfoot>
+            <tr>
+              <th >No</th>
+              <th >Id</th>
+              <th >Tipe Penilaian</th>
+              <th >Aksi</th>
+            </tr>
+          </tfoot>
         </table>
-      </div>
-  </div>
+
+
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$('#example').DataTable( {
+    "tipe_penilaian": "data/arrays.txt"
+    } );
+  } );
+
+</script>
   @endsection

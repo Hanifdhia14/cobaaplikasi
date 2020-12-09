@@ -9,7 +9,8 @@
     font-style: article;
   }
   button{
-    margin-top: 30pt;
+    margin-bottom: 20pt;
+    margin-top: 20pt;
     margin-left: 50pt;
 
   }
@@ -59,34 +60,41 @@
       </div>
     </div>
 
-      <div class="container">
-        <table class="table">
+
+          <table id="example" class="display" style="width:100%">
 
           <thead>
             <tr>
-              <th scope="col"class="text-center">No</th>
-              <th scope="col"class="text-center">Id</th>
-              <th scope="col"class="text-center">Document</th>
-              <th scope="col"class="text-center">Aksi</th>
+              <th >No</th>
+              <th >Id</th>
+              <th >Document</th>
+              <th >Aksi</th>
             </tr>
           </thead>
           <tbody>
           @foreach($document as $dcm)
             <tr>
-              <th scope="row"class="text-center">{{$loop->iteration}}</th>
-              <td class="text-center">{{$dcm->id}}</td>
-              <td class="text-center">{{$dcm->document}}</td>
+              <th>{{$loop->iteration}}</th>
+              <td>{{$dcm->id}}</td>
+              <td >{{$dcm->document}}</td>
                 <td class="text-center">
-                    <a href="" class="btn btn-primary"class="text-center" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
-                    <a href="document.index.destroy{{$dcm->id }}" class="btn btn-danger"class="text-center">delete</a>
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
+                    <a href="document.index.destroy{{$dcm->id }}" class="btn btn-danger">delete</a>
                 </td>
             </tr>
           @endforeach
           </tbody>
         </table>
-      </div>
+
   </div>
 
 
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+$('#example').DataTable( {
+    } );
+  } );
+
+</script>
   @endsection

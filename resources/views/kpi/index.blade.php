@@ -9,7 +9,8 @@
     font-style: article;
   }
   button{
-    margin-top: 30pt;
+    margin-bottom:20pt;
+    margin-top: 20pt;
     margin-left: 50pt;
 
   }
@@ -24,10 +25,9 @@
   </style>
 
 <div ="container-fluid">
-  <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
         <h1>KPI <small>Imput Nama KPI</small></h1>
-
 
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Tambah</button>
 
@@ -84,48 +84,59 @@
       </div>
     </div>
 
-    <div class="row" >
-          <div class="col-sm-3 col-md-10">
-            <div class="table-table responsive">
-              <table class="table table-bordered">
-              <thead>
+    <table id="example" class="display" style="width:100%;">
+            <thead>
                 <tr>
-                  <th scope="col">No</th>
-                  <th scope="col" class="text-center">Id</th>
-                  <th scope="col" class="text-center">Nama KPI</th>
-                  <th scope="col" class="text-center">Description</th>
-                  <th scope="col"class="text-center" >Polaritas</th>
-                  <th scope="col"class="text-center" >Parameter</th>
-                  <th scope="col"class="text-center" >Start Date</th>
-                  <th scope="col"class="text-center" >End Date</th>
-                  <th scope="col"class="text-center" >Aksi</th>
+                    <th>Id</th>
+                    <th>Nama KPI</th>
+                    <th>Deskripsi</th>
+                    <th>Polaritas</th>
+                    <th>Parameter</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
                 </tr>
-                </thead>
-                <tbody>
-                @foreach ($kpi as $kpi)
-                  <tr class="text-center">
-                    <th scope="row" class="">{{$loop-> iteration}}</th>
-                    <td class="">{{$kpi->id}}</td>
-                    <td class="">{{$kpi->nama_kpi}}</td>
-                    <td class="col-sm-6">{{$kpi->description}}</td>
-                    <td class="">{{$kpi->polaritas}}</td>
-                    <td class="">{{$kpi->parameter}}</td>
-                    <td class="">{{$kpi->start_date}}</td>
-                    <td class="">{{$kpi->end_date}}</td>
-                    <td class="" >
-                        <a href="" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
-                        <a href="kpi.index.destroy{{$kpi->id }}" class="btn btn-danger">delete</a>
-                    </td>
-                  </tr>
-                @endforeach
+            </thead>
+            <tbody>
+            @foreach ($kpi as $kpi)
+              <tr>
+                <th>{{$loop-> iteration}}</th>
+                <td>{{$kpi->id}}</td>
+                <td>{{$kpi->nama_kpi}}</td>
+                <td>{{$kpi->description}}</td>
+                <td>{{$kpi->polaritas}}</td>
+                <td>{{$kpi->parameter}}</td>
+                <td>{{$kpi->start_date}}</td>
+                <td>{{$kpi->end_date}}</td>
+                <td >
+                    <a href="" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
+                    <a href="kpi.index.destroy{{$kpi->id }}" class="btn btn-danger">delete</a>
+                </td>
+              </tr>
+            @endforeach
 
-                </tbody>
-              </table>
-            </div>
-          </div>
-      </div>
-  </div>
+            </tbody>
+            <tfoot>
+                <tr>
+                  <th>Id</th>
+                  <th>Nama KPI</th>
+                  <th>Deskripsi</th>
+                  <th>Polaritas</th>
+                  <th>Parameter</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                </tr>
+            </tfoot>
+        </table>
+
 
 
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$('#example').DataTable( {
+    } );
+  } );
+
+</script>
   @endsection

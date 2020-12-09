@@ -9,7 +9,8 @@
       font-style: article;
     }
     button{
-      margin-top: 30pt;
+      margin-top:10pt;
+      margin-bottom: 20pt;
       margin-left: 50pt;
 
     }
@@ -22,7 +23,7 @@
 
   </style>
 
-<div class="container-lg">
+
   <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
@@ -121,7 +122,7 @@
 <!-- End Content edit modal -->
 
         <!-- Content table data -->
-                
+
                       <table id="example" class="display" style="width:100%">
                         <thead>
                           <tr>
@@ -151,12 +152,12 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
+                                <th>No</th>
+                                <th>Id</th>
+                                <th>Kuadran</th>
                                 <th>Start date</th>
-                                <th>Salary</th>
+                                <th>End date</th>
+                                <th>Aksi</th>
                             </tr>
                         </tfoot>
                       </table>
@@ -165,7 +166,7 @@
 
 
       </div>
-</div>
+
 
 <link rel="" href="/css/master.css">
   @endsection

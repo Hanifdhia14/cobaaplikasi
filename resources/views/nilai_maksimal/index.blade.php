@@ -9,7 +9,8 @@
     font-style: article;
   }
   button{
-    margin-top: 30pt;
+    margin-bottom:10pt;
+    margin-top: 20pt;
     margin-left: 50pt;
 
   }
@@ -59,32 +60,31 @@
       </div>
     </div>
 
-      <div class="container">
-        <table class="table">
 
+        <table id="example" class="display" style="width:100%">
           <thead>
             <tr>
-              <th scope="col"class="text-center">No</th>
-              <th scope="col"class="text-center">Id</th>
-              <th scope="col"class="text-center">Nilai Maksimal</th>
-              <th scope="col"class="text-center">Aksi</th>
+              <th >No</th>
+              <th >Id</th>
+              <th >Nilai Maksimal</th>
+              <th >Aksi</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($nilai_maksimal as $nmax)
             <tr>
-              <th scope="row"class="text-center">{{$loop-> iteration}}</th>
-              <td class="text-center">{{$nmax->id}}</td>
-              <td class="text-center">{{$nmax->nilai_maksimal}}</td>
-              <td class="text-center">
-                  <a href="" class="btn btn-primary"class="text-center"data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
-                  <a href="nilai_maksimal.index.destroy{{$nmax->id }}" class="btn btn-danger"class="text-center">delete</a>
+              <th>{{$loop-> iteration}}</th>
+              <td>{{$nmax->id}}</td>
+              <td >{{$nmax->nilai_maksimal}}</td>
+              <td >
+                  <a href="" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
+                  <a href="nilai_maksimal.index.destroy{{$nmax->id }}" class="btn btn-danger">delete</a>
               </td>
             </tr>
             @endforeach
           </tbody>
         </table>
-      </div>
+
   </div>
 
 

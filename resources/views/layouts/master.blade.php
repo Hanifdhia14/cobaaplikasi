@@ -23,22 +23,22 @@
 </head>
 
 <body id="page-top">
-
+    @include('layouts.header')
       <div id="wrapper">
 
           <!-- Left side column. contains the logo and sidebar -->
         @include('layouts.sidebar')
-          <div id="container">
+
 
               <div class="container-fluid">
                   <!-- Content Wrapper. Contains page content -->
                   @yield('content')
               </div>
-            @include('layouts.footer')
-          </div>
+
+
       </div>
       <!-- ./wrapper -->
-
+  @include('layouts.footer')
 
 
 
@@ -60,6 +60,18 @@
     <script src="sbadmin2/js/demo/chart-pie-demo.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        "kuadran": "data/arrays.txt"
+        } );
+      } );
+
+    </script>
+
+
+
 </body>
 
 </html>
