@@ -42,22 +42,21 @@
 </head>
 <body id="page-top">
   @include('layouts.header')
+  <div id="wrapper">
+<!-- Left side column. contains the logo and sidebar -->
   @include('layouts.user.sidebaruser')
-
-  <div class="container-fluid">
-    <div id="wrapper">
-      <div class="container">
-
-
-
-
-
-
+    <div id="container">
+      <div class="container-fluid">
+<!-- Content Wrapper. Contains page content -->
+    @yield('content')
       </div>
+
     </div>
+  @include('layouts.footer')
+
+
   </div>
 <!-- ./wrapper -->
-  @include('layouts.footer')
 </body>
 <!-- jQuery 3 -->
 <script src="{{asset('frontend')}}/bower_components/jquery/dist/jquery.min.js"></script>

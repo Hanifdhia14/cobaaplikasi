@@ -15,14 +15,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/main', function () {
     return view('home');
 });
-//Route:: get('/', function () {
-  //  return view('login');
-//});
+//Route::get('/main', 'HomeController@index');
 
+Route:: get('/', function () {
+    return view('login');
+});
+
+//Route:: get('employee', function () {
+//    return view('employee.index');
+//});
 
 //LOG-IN
 Route::get('login', 'LoginController@index');
-Route::POST('login', 'LoginController@index');
+Route::POST('login', 'LoginController@do_login');
+
 
 //Kuadran:
 Route::get('kuadran.index', 'KuadranController@index');
@@ -33,12 +39,10 @@ Route::get('kuadran.index.destroy{id}', 'KuadranController@destroy');
 
 
 
-
 //kpi:
 Route::get('kpi.index', 'KpiController@index');
 Route::POST('kpi.index.store', 'KpiController@store');
 Route::get('kpi.index.destroy{id}', 'KpiController@destroy');
-
 
 
 
@@ -53,16 +57,10 @@ Route::get('tipe_penilaian.index.destroy{id}', 'TipepenilaianController@destroy'
 
 
 
-
-
-
 // satuan:
 Route::get('satuan.index', 'SatuanController@index');
 Route::POST('satuan.index.store', 'SatuanController@store');
 Route::get('satuan.index.destroy{id}', 'SatuanController@destroy');
-
-
-
 
 
 
@@ -74,25 +72,17 @@ Route::get('nilai_maksimal.index.destroy{id}', 'NilaimaksimalController@destroy'
 
 
 
-
-
-
-
-
-
-
 // document:
 Route::get('document.index', 'DocumentController@index');
 Route::POST('document.index.store', 'DocumentController@store');
 Route::get('document.index.destroy{id}', 'documentController@destroy');
 
 
+// Data Employee
+Route::get('employee.index', 'EmployeeController@index');
 
+
+//Hak Akses
 
 //User
-Route:: get('home', function () {
-    return view('user.userhome');
-});
-Route:: get('usermaster', function () {
-    return view('layouts.user.usermaster');
-});
+Route::get('user.userhome', 'user.UserhomeController@index');

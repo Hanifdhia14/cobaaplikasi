@@ -121,39 +121,45 @@
 <!-- End Content edit modal -->
 
         <!-- Content table data -->
-                <div class="row">
-                  <div class="col-sm-3 col-md-9">
-                    <div class="table-table responsive">
-                      <table class="table table-bordered" id="table">
-
+                
+                      <table id="example" class="display" style="width:100%">
+                        <thead>
                           <tr>
-                            <th scope="col"class="text-center">No</th>
-                            <th scope="col"class="text-center">Id</th>
-                            <th scope="col"class="text-center">Kuadran</th>
-                            <th scope="col"class="text-center">Start Date</th>
-                            <th scope="col"class="text-center">End Date</th>
-                            <th scope="col"class="text-center">Aksi</th>
+                            <th>No</th>
+                            <th>Id</th>
+                            <th>Kuadran</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Aksi</th>
                           </tr>
+                        </thead>
 
                         <tbody>
                         @foreach ($kuadran as $kdr)
                           <tr>
-                            <th scope="row" class="text-center">{{$loop-> iteration}}</th>
-                            <td class="text-center">{{$kdr->id}}</td>
-                            <td class="text-center">{{$kdr->kuadran}}</td>
-                            <td class="text-center">{{$kdr->start_date}}</td>
-                            <td class="text-center">{{$kdr->end_date}}</td>
-                              <td class="text-center">
+                            <td >{{$loop-> iteration}}</th>
+                            <td >{{$kdr->id}}</td>
+                            <td >{{$kdr->kuadran}}</td>
+                            <td >{{$kdr->start_date}}</td>
+                            <td >{{$kdr->end_date}}</td>
+                            <td >
                                   <a href="kuadran.index.edit{{$kdr->id}}" class="btn btn-primary editbtn" class="text-center" data-toggle="modal" data-target="editmodal" data-whatever="@getbootstrap">edit</a>
                                   <a href="kuadran.index.destroy{{$kdr->id }}" class="btn btn-danger"class="text-center">delete</a>
-                              </td>
+                            </td>
                           </tr>
                         @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>
+                            </tr>
+                        </tfoot>
                       </table>
-                  </div>
-                </div>
-            </div>
 
 
 

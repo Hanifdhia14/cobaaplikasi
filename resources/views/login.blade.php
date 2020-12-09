@@ -80,7 +80,6 @@ label{
 
           <form method="POST" accept="{{url('login')}}" class="need-validation" novalidate="">
             {{csrf_field()}}
-
             <div class="input-group flex-nowrap">
               <div class="input-group-prepend "></div>
                 <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required autocomplete="username" autofocus>
@@ -109,9 +108,9 @@ label{
               </div>
 
               <div class="input-group flex-nowrap" accesskey="">
-                <div class="col-mg-5">
-                    <div style=" margin-left:270pt;">
-                      <button type="submit" class="btn btn-primary" value="" href="" >Log In</button>
+                <div class="btn-group">
+                    <div>
+                      <button type="submit" class="btn btn-primary" value="" href="{{url('/main')}}" >Log In</button>
                     </div>
                 </div>
               </div>

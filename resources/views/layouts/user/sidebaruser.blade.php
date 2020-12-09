@@ -7,7 +7,7 @@
             <div class="user-info">
               <img src="{{asset('frontend')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           <h6 class="text-center"> Dhia Eartha Hanif </h6>
-          <p class="text-center ">Admin </p>
+          <p class="text-center ">User </p>
             </div>
       </div>
 
@@ -16,7 +16,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header"> MENU </li>
       <li class="active treeview">
-          <li> <a href="{{url('/')}}"><i class="fa fa-home"></i> Dashboard </a></li>
+          <li> <a href="{{url('/userhome')}}"><i class="fa fa-home"></i> Dashboard </a></li>
       </li>
       <li class="treeview">
         <a href="#">
