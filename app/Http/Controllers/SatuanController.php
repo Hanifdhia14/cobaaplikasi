@@ -35,13 +35,17 @@ class SatuanController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+        'id' => 'required',
+        'satuan' => 'required',
+    ]);
         // insert data ke table pegawai
         DB::table('satuan11')->insert([
        'id' => $request->id,
        'satuan' => $request->satuan,
         ]);
         // alihkan halaman ke halaman pegawai
-        return redirect('satuan.index');
+        return redirect('satuan.index')-> with('status', 'Data Satuan Penilaian Telah Berhasil Ditambahkan!');
     }
 
     /**
@@ -61,9 +65,16 @@ class SatuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        if ($request->isMethod('POST')) {
+            $tp = $request->all();
+        }
+        $satuan=DB::table('satuan11')->where('id', $request->id)->update([
+     'id' => $request->id,
+     'satuan' => $request->satuan,
+     ]);
+        return redirect('satuan.index')-> with('status', 'Data Satuan Penilaian Telah Berhasil Diubah!');
     }
 
     /**
@@ -90,6 +101,6 @@ class SatuanController extends Controller
         DB::table('satuan11')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman kuadran
-        return redirect('satuan.index');
+        return redirect('satuan.index')-> with('status', 'Data Satuan Penilaian Telah Berhasil Dihapuskan!');
     }
 }

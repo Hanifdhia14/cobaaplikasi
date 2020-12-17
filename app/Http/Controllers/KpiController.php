@@ -37,6 +37,15 @@ class KpiController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+        'id' => 'required',
+        'nama_kpi' => 'required',
+        'description' => 'required',
+        'polaritas' => 'required',
+        'parameter' => 'required',
+        'start_date' => 'required',
+        'end_date' => 'required',
+    ]);
         // insert data ke table pegawai
         DB::table('kpi11')->insert([
          'id' => $request->id,
@@ -48,7 +57,7 @@ class KpiController extends Controller
          'end_date' => $request->end_date
   ]);
         // alihkan halaman ke halaman pegawai
-        return redirect('kpi.index');
+        return redirect('kpi.index')-> with('status', 'Data KPI Telah Berhasil Ditambahkan!');
     }
 
     /**
@@ -68,9 +77,21 @@ class KpiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        if ($request->isMethod('POST')) {
+            $kpi = $request->all();
+        }
+        $kpi=DB::table('kpi11')->where('id', $request->id)->update([
+          'id' => $request->id,
+          'nama_kpi' => $request->nama_kpi,
+          'description' => $request->description,
+          'polaritas' => $request->polaritas,
+          'parameter' => $request->parameter,
+          'start_date' => $request->start_date,
+          'end_date' => $request->end_date
+          ]);
+        return redirect('kpi.index')-> with('status', 'Data kpi Telah Berhasil Diubah!');
     }
 
     /**
@@ -97,6 +118,6 @@ class KpiController extends Controller
         DB::table('kpi11')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman kpi
-        return redirect('kpi.index');
+        return redirect('kpi.index')-> with('status', 'Data KPI Telah Berhasil Dihapuskan!');
     }
 }

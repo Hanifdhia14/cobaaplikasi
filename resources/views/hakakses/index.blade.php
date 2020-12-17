@@ -9,7 +9,8 @@
     font-style: article;
   }
   button{
-    margin-top: 30pt;
+    margin-bottom:20pt;
+    margin-top: 20pt;
     margin-left: 50pt;
 
   }
@@ -23,7 +24,7 @@
 
   </style>
 
-<div ="container-fluid">
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
         <h1>Hak Akses <small>Imput Hak Akses</small></h1>
@@ -35,7 +36,7 @@
               <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-                <h2 class="modal-title" id="exampleModalLabel">Tambah Employee</h2>
+                <h2 class="modal-title" id="exampleModalLabel">Tambah Hak Akses</h2>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -49,28 +50,20 @@
               </div>
             <form>
               <div class="form-group">
-                <label for="nama" class="col-form-label">Nama Lengkap:</label>
+                <label for="nama" class="col-form-label">Nama:</label>
                 <input name="nama"type="text" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap" required>
               </div>
               <div class="form-group">
-                <label for="level" class="col-form-label">Level:</label>
-                <textarea name="level" class="form-control" id="Level" placeholder="Masukkan Level"required></textarea>
+                <label for="username" class="col-form-label">Username:</label>
+                <input name="username" class="form-control" id="username" placeholder="Masukkan Username"required>
               </div>
               <div class="form-group">
-                <label for="jabatan" class="col-form-label">Jabatan:</label>
-                <input name="jabatan"type="text" class="form-control" id="jabatan" placeholder="Masukkan jabatan" required>
+                <label for="pasword" class="col-form-label">Pasword:</label>
+                <input name="pasword"type="text" class="form-control" id="Pasword" placeholder="Masukkan pasword" required>
               </div>
               <div class="form-group">
-                <label for="unit_kerja" class="col-form-label">Unit Kerja:</label>
-                <input name="unit_kerja" type="text" class="form-control" id="unit_kerja" placeholder="Masukkan Unit Kerja" required>
-              </div>
-              <div class="form-group">
-                <label for="wilayah" class="col-form-label">Wilayah:</label>
-                <input name="wilayah"type="text" class="form-control" id="wilayah" placeholder="Masukkan Wilayah" required>
-              </div>
-              <div class="form-group">
-                <label for="email"class="col-form-label">Email:</label>
-                <input name="email"type="text" class="form-control" id="email" placeholder="Masukkan Email" required>
+                <label for="role" class="col-form-label">Role:</label>
+                <input name="role" type="text" class="form-control" id="role" placeholder="Masukkan Unit Kerja" required>
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Buat</button>
@@ -83,35 +76,29 @@
       </div>
     </div>
 
-    <div class="row" >
-          <div class="col-sm-3 col-md-10">
-            <div class="table-table responsive">
-              <table class="table table-bordered">
+
+            <table id="example" class="display" style="width:100%">
               <thead>
                 <tr>
-                  <th scope="col">No</th>
-                  <th scope="col" class="text-center">NIK</th>
-                  <th scope="col" class="text-center">Nama Lengkap</th>
-                  <th scope="col" class="text-center">Level</th>
-                  <th scope="col"class="text-center" >Jabatan</th>
-                  <th scope="col"class="text-center" >Unit Kerja</th>
-                  <th scope="col"class="text-center" >Wilayah</th>
-                  <th scope="col"class="text-center" >Email/th>
-                  <th scope="col"class="text-center" >Aksi</th>
+                  <th >No</th>
+                  <th >NIK</th>
+                  <th >Nama</th>
+                  <th >Username</th>
+                  <th >pasword</th>
+                  <th >Role</th>
+                  <th >Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                  <tr class="text-center">
-                    <th scope="row" class=""></th>
-                    <td class=""></td>
-                    <td class=""></td>
-                    <td class="col-sm-6"></td>
-                    <td class=""></td>
-                    <td class=""></td>
-                    <td class=""></td>
-                    <td class=""></td>
-                    <td class="" >
+                  <tr>
+                    <th ></th>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td ></td>
+                    <td>
                         <a href="" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
                         <a href="" class="btn btn-danger">delete</a>
                     </td>
@@ -119,9 +106,14 @@
 
                 </tbody>
               </table>
-            </div>
-          </div>
-      </div>
+
   </div>
-</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+$('#example').DataTable( {
+    } );
+  } );
+</script>
   @endsection

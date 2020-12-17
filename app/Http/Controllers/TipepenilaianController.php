@@ -37,6 +37,10 @@ class TipepenilaianController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id' => 'required',
+            'tipe_penilaian' => 'required',
+        ]);
         //insert data ke table Tipe penilaian
         DB::table('tipepenilaian11')->insert([
          'id' => $request->id,
@@ -44,7 +48,7 @@ class TipepenilaianController extends Controller
 
   ]);
         // alihkan halaman ke halaman Tipe Penilaian
-        return redirect('tipe_penilaian.index');
+        return redirect('tipe_penilaian.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Diambahkan!');
     }
 
     /**
@@ -64,9 +68,16 @@ class TipepenilaianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        if ($request->isMethod('POST')) {
+            $tp = $request->all();
+        }
+        $tipe_penilaian=DB::table('tipepenilaian11')->where('id', $request->id)->update([
+       'id' => $request->id,
+       'tipe_penilaian' => $request->tipe_penilaian,
+       ]);
+        return redirect('tipe_penilaian.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Diubah!');
     }
 
     /**
@@ -93,6 +104,6 @@ class TipepenilaianController extends Controller
         DB::table('tipepenilaian11')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman tipe_penilaian
-        return redirect('tipe_penilaian.index');
+        return redirect('tipe_penilaian.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Dihapuskan!');
     }
 }

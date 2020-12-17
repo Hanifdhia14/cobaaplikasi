@@ -28,6 +28,13 @@
 
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Tambah</button>
 
+              @if (session('status'))
+                  <div class="alert alert-success">
+                      {{ session('status') }}
+                  </div>
+              @endif
+
+  <!-- Content tambah modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -38,17 +45,25 @@
             </button>
           </div>
           <div class="modal-body">
-            <form method="POST" action="{{action('NilaimaksimalController@store')}}" >
+            <form method="POST" action="{{action('NilaimaksimalController@store')}}" id="editform">
               {{csrf_field()}}
 
               <div class="form-group">
                 <label for="id" class="col-form-label">Id:</label>
-                <input name="id" type="number" class="form-control" id="id" placeholder="Masukkan Id">
+                <input name="id" type="number" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{old('id')}}">
+                @error('id')
+                  <div class="invalid-feedback">{{$message}}</div>
+                @enderror
               </div>
+
               <div class="form-group">
                 <label for="nilai_maksimal" class="col-form-label">Nilai Maksimal:</label>
-                <input name="nilai_maksimal" type="text" class="form-control" id="nilai_maksimal"placeholder="Masukkan Nilai Maksimal">
+                <input name="nilai_maksimal" type="text" class="form-control @error('nilai_maksimal')is-invalid @enderror" id="nilai_maksimal"placeholder="Masukkan Nilai Maksimal" value="{{old('id')}}">
+                @error('nilai_maksimal')
+                  <div class="invalid-feedback">{{$message}}</div>
+                @enderror
               </div>
+
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Buat</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
@@ -59,8 +74,46 @@
         </div>
       </div>
     </div>
+  <!-- Content End tambah modal -->
+
+<!-- Content Edit modal -->
+@foreach($nilai_maksimal as $nmax)
+      <div class="modal fade" id="editModal-{{$nmax->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+            <h2 class="modal-title" id="exampleModalLabel">Tambah Nilai Maksimal</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+      <div class="modal-body">
+        <form method="POST" action="{{action('NilaimaksimalController@edit')}}" >
+        {{csrf_field()}}
+
+          <div class="form-group">
+                      <label for="id" class="col-form-label">Id:</label>
+            <input name="id" type="number" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id"value="{{$nmax->id}}" >
+          </div>
+
+          <div class="form-group">
+                          <label for="nilai_maksimal" class="col-form-label">Nilai Maksimal:</label>
+              <input name="nilai_maksimal" type="text" class="form-control @error('nilai_maksimal')is-invalid @enderror" id="nilai_maksimal"placeholder="Masukkan Nilai Maksimal" value="{{$nmax->nilai_maksimal}}">
+          </div>
+          <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Buat</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
 
 
+<!-- Content End Edit modal -->
         <table id="example" class="display" style="width:100%">
           <thead>
             <tr>
@@ -77,8 +130,8 @@
               <td>{{$nmax->id}}</td>
               <td >{{$nmax->nilai_maksimal}}</td>
               <td >
-                  <a href="" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
-                  <a href="nilai_maksimal.index.destroy{{$nmax->id }}" class="btn btn-danger">delete</a>
+                  <a href="" class="btn btn-primary"data-toggle="modal" data-target="#editModal-{{$nmax->id}}" data-whatever="@getbootstrap">edit</a>
+                  <a href="nilai_maksimal.index.destroy{{$nmax->id }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')" >delete</a>
               </td>
             </tr>
             @endforeach
@@ -89,4 +142,11 @@
 
 
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+$('#example').DataTable( {
+    } );
+  } );
+
+</script>
   @endsection

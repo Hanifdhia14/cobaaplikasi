@@ -1,4 +1,4 @@
-@extends('layouts.master')
+ @extends('layouts.master')
 
 
   @section('content')
@@ -30,7 +30,11 @@
         <h1>Master Kuadran <small>Imput Nama Kuadran</small></h1>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Tambah</button>
         <!-- Search form -->
-
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
 
 
   <!-- Content tambah modal -->
@@ -45,25 +49,37 @@
                   </button>
               </div>
 
-              <form method="POST" action="{{action('KuadranController@store'),('KuadranController@edit')}}">
+              <form method="POST" action="{{action('KuadranController@store')}}">
                 <div class="modal-body">
                 {{csrf_field()}}
 
                 <div class="form-group">
                   <label for="id" class="col-form-label">Id:</label>
-                  <input name="id"  type="number" class="form-control" id="id"placeholder="Masukkan Id" required>
+                  <input name="id"  type="number" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{old('id')}}">
+                  @error('id')
+                    <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                 </div>
                 <div class="form-group">
                   <label for="Kuadran" class="col-form-label">Nama Kuadran:</label>
-                  <input name="kuadran"  type="text" class="form-control" id="kuadran" placeholder="Masukkan Kuadran"  required>
+                  <input name="kuadran"  type="text" class="form-control @error('kuadran')is-invalid @enderror" id="kuadran" placeholder="Masukkan Kuadran"  value="{{old('kuadran')}}">
+                  @error('kuadran')
+                    <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                 </div>
                 <div class="form-group">
                   <label for="start_date" class="col-form-label">Start Date:</label>
-                  <input name="start_date" type="datetime" class="form-control" id="start_date" placeholder="Masukkan Start Date"   required>
+                  <input name="start_date" type="datetime" class="form-control @error('start_date')is-invalid @enderror " id="start_date" placeholder="Masukkan Start Date" value="{{old('start_date')}}">
+                  @error('start_date')
+                    <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                 </div>
                 <div class="form-group">
                   <label for="end_date" class="col-form-label">End Date:</label>
-                  <input name="end_date" type="datetime" class="form-control" id="end_date" placeholder="Masukkan End Date" required>
+                  <input name="end_date" type="datetime" class="form-control @error('end_date')is-invalid @enderror " id="end_date" placeholder="Masukkan End Date" value="{{old('endat')}}">
+                  @error('end_date')
+                    <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                 </div>
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary">Buat</button>
@@ -75,42 +91,42 @@
             </div>
           </div>
         </div>
-<!-- End Content edit modal -->
+<!-- End Content Tambah modal -->
 
   <!-- Content edit modal -->
-      <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @foreach ($kuadran as $kdr)
+      <div class="modal fade" id="edit-{{$kdr->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h2 class="modal-title" id="modal-tambah">Edit Data Kuadran</h2>
+              <h2 class="modal-title" id="modal-tambah">Edit Kuadran</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            <form id="editform">
-              <div class="modal-body">
+            <form action="{{action('KuadranController@edit')}}" method="POST" id="editform">
               {{csrf_field()}}
-              {{method_field('PUT')}}
 
+            <div class="modal-body">
               <div class="form-group">
                 <label for="id" class="col-form-label">Id:</label>
-                <input name="id"  type="number" class="form-control" id="id"placeholder="Masukkan Id" required>
+                <input name="id"  type="number" class="form-control" id ="id"placeholder="Masukkan Id" value="{{$kdr->id}}">
               </div>
               <div class="form-group">
                 <label for="Kuadran" class="col-form-label">Nama Kuadran:</label>
-                <input name="kuadran"  type="text" class="form-control" id="kuadran" placeholder="Masukkan Kuadran"  required>
+                <input name="kuadran"  type="text" class="form-control" id="kuadran" placeholder="Masukkan Kuadran"        value="{{$kdr->kuadran}}">
               </div>
               <div class="form-group">
                 <label for="start_date" class="col-form-label">Start Date:</label>
-                <input name="start_date" type="datetime" class="form-control" id="start_date" placeholder="Masukkan Start Date"      required>
+                <input name="start_date" type="datetime" class="form-control" id="start_date" placeholder="Masukkan Start Date" value="{{$kdr->start_date}}">
               </div>
               <div class="form-group" data-provide="datepicker">
                 <label for="end_date" class="col-form-label">End Date:</label>
-                <input name="end_date" type="datetime" class="form-control" id="end_date" placeholder="Masukkan End Date"  required>
+                <input name="end_date" type="datetime" class="form-control" id="end_date" placeholder="Masukkan End Date" value="{{$kdr->end_date}}">
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Ubah</button>
+                <button type="submit" class="btn btn-primary">Ubah Data</button>
                 <button type="submit" class="btn btn-danger" data-dismiss="modal">Batal</button>
               </div>
               </div>
@@ -119,6 +135,7 @@
           </div>
         </div>
       </div>
+      @endforeach
 <!-- End Content edit modal -->
 
         <!-- Content table data -->
@@ -139,13 +156,13 @@
                         @foreach ($kuadran as $kdr)
                           <tr>
                             <td >{{$loop-> iteration}}</th>
-                            <td >{{$kdr->id}}</td>
-                            <td >{{$kdr->kuadran}}</td>
-                            <td >{{$kdr->start_date}}</td>
-                            <td >{{$kdr->end_date}}</td>
+                            <td >{{$kdr ->id}}</td>
+                            <td >{{$kdr ->kuadran}}</td>
+                            <td >{{$kdr ->start_date}}</td>
+                            <td >{{$kdr ->end_date}}</td>
                             <td >
-                                  <a href="kuadran.index.edit{{$kdr->id}}" class="btn btn-primary editbtn" class="text-center" data-toggle="modal" data-target="editmodal" data-whatever="@getbootstrap">edit</a>
-                                  <a href="kuadran.index.destroy{{$kdr->id }}" class="btn btn-danger"class="text-center">delete</a>
+                                  <a class="btn btn-primary" data-toggle="modal" data-target="#edit-{{$kdr->id}}">edit</a>
+                                  <a href="kuadran.index.destroy{{$kdr->id }}" class="btn btn-danger" class="text-center" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">delete</a>
                             </td>
                           </tr>
                         @endforeach
@@ -167,6 +184,11 @@
 
       </div>
 
+<script type="text/javascript">
+$(document).ready(function() {
+$('#example').DataTable( {
+    } );
+  } );
 
-<link rel="" href="/css/master.css">
+</script>
   @endsection

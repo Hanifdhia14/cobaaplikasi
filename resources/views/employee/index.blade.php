@@ -9,7 +9,8 @@
     font-style: article;
   }
   button{
-    margin-top: 30pt;
+    margin-bottom: 20pt;
+    margin-top: 20pt;
     margin-left: 50pt;
 
   }
@@ -23,7 +24,7 @@
 
   </style>
 
-<div ="container-fluid">
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
         <h1>Employee <small>Imput Employee</small></h1>
@@ -40,21 +41,22 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
           <div class="modal-body">
-            <form method="POST" action="" >
+            <form method="POST" action="{{action('EmployeeController@store')}}">
+              {{csrf_field()}}
 
               <div class="form-group">
                 <label for="nik" class="col-form-label">NIK:</label>
                 <input name="nik"type="number" class="form-control" id="nik" placeholder="Masukkan NIK" required>
               </div>
-            <form>
               <div class="form-group">
                 <label for="nama" class="col-form-label">Nama Lengkap:</label>
                 <input name="nama"type="text" class="form-control" id="nama" placeholder="Masukkan Nama Lengkap" required>
               </div>
               <div class="form-group">
                 <label for="level" class="col-form-label">Level:</label>
-                <textarea name="level" class="form-control" id="Level" placeholder="Masukkan Level"required></textarea>
+                <input name="level" class="form-control" id="Level" placeholder="Masukkan Level"required>
               </div>
               <div class="form-group">
                 <label for="jabatan" class="col-form-label">Jabatan:</label>
@@ -83,47 +85,51 @@
       </div>
     </div>
 
-    <div class="row" >
-          <div class="col-sm-3 col-md-10">
-            <div class="table-table responsive">
-              <table class="table table-bordered">
+
+            <table id="example" class="display" style="width:100%">
               <thead>
                 <tr>
-                  <th scope="col">No</th>
-                  <th scope="col" class="text-center">NIK</th>
-                  <th scope="col" class="text-center">Nama Lengkap</th>
-                  <th scope="col" class="text-center">Level</th>
-                  <th scope="col"class="text-center" >Jabatan</th>
-                  <th scope="col"class="text-center" >Unit Kerja</th>
-                  <th scope="col"class="text-center" >Wilayah</th>
-                  <th scope="col"class="text-center" >Email/th>
-                  <th scope="col"class="text-center" >Aksi</th>
+                  <th >No</th>
+                  <th >NIK</th>
+                  <th >Nama Lengkap</th>
+                  <th >Level</th>
+                  <th >Jabatan</th>
+                  <th >Unit Kerja</th>
+                  <th >Wilayah</th>
+                  <th >Email</th>
+                  <th >Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-
-                  <tr class="text-center">
-                    <th scope="row" class=""></th>
-                    <td class=""></td>
-                    <td class=""></td>
-                    <td class="col-sm-6"></td>
-                    <td class=""></td>
-                    <td class=""></td>
-                    <td class=""></td>
-                    <td class=""></td>
+                @foreach ($employee as $empl)
+                  <tr>
+                    <th >{{$loop-> iteration}}</th>
+                    <td >{{$empl->nik}}</td>
+                    <td >{{$empl->nama}}</td>
+                    <td >{{$empl->level}}</td>
+                    <td >{{$empl->jabatan}}</td>
+                    <td >{{$empl->unit_kerja}}</td>
+                    <td >{{$empl->wilayah}}</td>
+                    <td >{{$empl->email}}</td>
                     <td class="" >
                         <a href="" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">edit</a>
-                        <a href="" class="btn btn-danger">delete</a>
+                        <a href="employee.index.destroy{{$empl-> nik }}" class="btn btn-danger">delete</a>
                     </td>
                   </tr>
-
+                @endforeach
                 </tbody>
               </table>
-            </div>
-          </div>
-      </div>
+
   </div>
 
 
-</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+$('#example').DataTable( {
+    } );
+  } );
+
+</script>
   @endsection

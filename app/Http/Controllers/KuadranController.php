@@ -27,7 +27,7 @@ class KuadranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request$request)
+    public function create(Request $request)
     {
         //return view('kuadran.index');//return 'Bisa Submit';
     }
@@ -42,6 +42,12 @@ class KuadranController extends Controller
     // method untuk insert data ke table pegawai
     public function store(Request $request)
     {
+        $request->validate([
+              'id' => 'required',
+              'kuadran' => 'required',
+              'start_date' => 'required',
+              'end_date' => 'required',
+          ]);
         // insert data ke table kuadran
         DB::table('kuadran11')->insert([
        'id' => $request->id,
@@ -49,8 +55,9 @@ class KuadranController extends Controller
        'start_date' => $request->start_date,
        'end_date' => $request->end_date
   ]);
+
         // alihkan halaman ke halaman kuadran
-        return redirect('kuadran.index');
+        return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Ditambahkan!');
     }
 
 
@@ -60,7 +67,7 @@ class KuadranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
     }
@@ -71,9 +78,18 @@ class KuadranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        return redirect('kuadran.index', compact('kuadran'));
+        if ($request->isMethod('POST')) {
+            $kdr = $request->all();
+        }
+        $kuadran=DB::table('kuadran11')->where('id', $request->id)->update([
+         'id' => $request->id,
+         'kuadran' => $request->kuadran,
+         'start_date' => $request->start_date,
+         'end_date' => $request->end_date
+         ]);
+        return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Diubah!');
     }
 
     /**
@@ -83,16 +99,10 @@ class KuadranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        // update data pegawai
-        DB::table('kuadran')->where('id', $request->id)->update([
-          'id' => $request->id,
-          'kuadran' => $request->kuadran,
-          'start_date' => $request->start_date,
-          'end_date' => $request->end_date
-      ]);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -106,6 +116,6 @@ class KuadranController extends Controller
         DB::table('kuadran11')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman kuadran
-        return redirect('kuadran.index');
+        return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Dihapuskan!');
     }
 }

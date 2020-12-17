@@ -15,7 +15,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('employee.index');
+        $employee= DB::table('employee')->get();
+        return view('employee.index', ['employee'=>$employee]);
     }
 
     /**
@@ -36,6 +37,17 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        DB::table('employee')->insert([
+     'nik' => $request->nik,
+     'nama' => $request->nama,
+     'level' => $request->level,
+     'jabatan' => $request->jabatan,
+     'unit_kerja' => $request->unit_kerja,
+     'wilayah' => $request->wilayah,
+     'email' => $request->email,
+      ]);
+        // alihkan halaman ke halaman pegawai
+        return redirect('employee.index');
     }
 
     /**
@@ -44,7 +56,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nik)
     {
         //
     }
@@ -67,7 +79,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nik)
     {
         //
     }
@@ -78,7 +90,11 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($nik)
+    {  // menghapus data Kuadran berdasarkan id yang dipilih
+        DB::table('employee')->where('nik', $nik)->delete();
+
+        // alihkan halaman ke halaman kuadran
+        return redirect('employee.index');
     }
 }

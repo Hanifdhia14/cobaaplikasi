@@ -36,13 +36,17 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+          'id' => 'required',
+          'document' => 'required',
+      ]);
         // insert data ke table document
         DB::table('document11')->insert([
      'id' => $request->id,
      'document' => $request->document,
       ]);
         // alihkan halaman ke halaman document
-        return redirect('document.index');
+        return redirect('document.index')-> with('status', 'Data document Telah Berhasil Diubah!');
     }
 
     /**
@@ -62,9 +66,16 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        if ($request->isMethod('POST')) {
+            $tp = $request->all();
+        }
+        $document=DB::table('document11')->where('id', $request->id)->update([
+        'id' => $request->id,
+        'document' => $request->document,
+        ]);
+        return redirect('document.index')-> with('status', 'Data document Telah Berhasil Diubah!');
     }
 
     /**
@@ -91,6 +102,6 @@ class DocumentController extends Controller
         DB::table('document11')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman document
-        return redirect('document.index');
+        return redirect('document.index')-> with('status', 'Data document Telah Berhasil Dihapuskan!');
     }
 }

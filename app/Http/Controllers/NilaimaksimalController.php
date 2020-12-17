@@ -37,6 +37,10 @@ class NilaimaksimalController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+        'id' => 'required',
+        'nilai_maksimal'=> 'required',
+    ]);
         // insert data ke table Nilaisimal
         DB::table('nilaimaksimal11')->insert([
          'id' => $request->id,
@@ -44,7 +48,7 @@ class NilaimaksimalController extends Controller
 
   ]);
         // alihkan halaman ke halaman Nilai Maksimal
-        return redirect('nilai_maksimal.index');
+        return redirect('nilai_maksimal.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Diambahkan!');
     }
 
     /**
@@ -64,10 +68,18 @@ class NilaimaksimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        if ($request->isMethod('POST')) {
+            $tp = $request->all();
+        }
+        $nilai_maksimal=DB::table('nilaimaksimal11')->where('id', $request->id)->update([
+        'id' => $request->id,
+        'nilai_maksimal' => $request->nilai_maksimal,
+        ]);
+        return redirect('nilai_maksimal.index')-> with('status', 'Data Nilai Maksimal Telah Berhasil Diubah!');
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -93,6 +105,6 @@ class NilaimaksimalController extends Controller
         DB::table('nilaimaksimal11')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman nilai_maksimal
-        return redirect('nilai_maksimal.index');
+        return redirect('nilai_maksimal.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Diambahkan!');
     }
 }
