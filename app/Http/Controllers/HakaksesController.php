@@ -6,8 +6,30 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Auth;
+
 class HakaksesController extends Controller
 {
+    public function postlogin(Request $request)
+    {
+        //  dd($request->null());
+        if (Auth:: attempt(['username'=>$request->username,'password'=>$request->password])) {
+            return redirect('/main');
+        }
+        return redirect('login')->with('message', 'Username Atau Password Anda Salah!!');
+    }
+
+    public function login(Request $request)
+    {
+        return view('login');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('login');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +37,8 @@ class HakaksesController extends Controller
      */
     public function index()
     {
-        return view('hakakses.index');
+        $hakak= DB::table('hakak')->get();
+        return view('hakakses.index', ['hakak'=>$hakak]);
     }
 
     /**
@@ -36,6 +59,23 @@ class HakaksesController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nik' => 'required',
+            'name' => 'required',
+            'level' => 'required',
+            'username' => 'required',
+            'password' => 'required'
+
+        ]);
+
+        DB::table('hakak')->insert([
+     'nik' => $request->nik,
+     'name' => $request->name,
+     'level' => $request->level,
+     'username' => $request->username,
+     'password' => $request->password
+  ]);
+        return redirect('hakakses.index')-> with('status', 'Data Hak AKses Telah Berhasil Ditambahkan!');
     }
 
     /**
@@ -55,9 +95,20 @@ class HakaksesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        if ($request->isMethod('POST')) {
+            $hk = $request->all();
+        }
+        $hakak=DB::table('hakak')->where('nik', $request->nik)->update([
+           'nik' => $request->nik,
+           'name' => $request->name,
+           'level' => $request->level,
+           'username' => $request->username,
+           'password' => $request->password,
+
+        ]);
+        return redirect('hakakses.index')-> with('status', 'Data Hak Akses Telah Berhasil Diubah!');
     }
 
     /**
@@ -78,7 +129,11 @@ class HakaksesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($nik)
+    {  // menghapus data Kuadran berdasarkan id yang dipilih
+        DB::table('hakak')->where('nik', $nik)->delete();
+
+        // alihkan halaman ke halaman kuadran
+        return redirect('hakakses.index')-> with('status', 'Data Hak Akses Telah Berhasil Dihapus!');
     }
 }

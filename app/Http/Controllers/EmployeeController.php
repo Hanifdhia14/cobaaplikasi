@@ -37,6 +37,16 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nik' => 'required',
+            'nama' => 'required',
+            'level' => 'required',
+            'jabatan' => 'required',
+            'unit_kerja' => 'required',
+            'wilayah' => 'required',
+            'email' => 'required',
+        ]);
+
         DB::table('employee')->insert([
      'nik' => $request->nik,
      'nama' => $request->nama,
@@ -44,10 +54,10 @@ class EmployeeController extends Controller
      'jabatan' => $request->jabatan,
      'unit_kerja' => $request->unit_kerja,
      'wilayah' => $request->wilayah,
-     'email' => $request->email,
+     'email' => $request->email
       ]);
         // alihkan halaman ke halaman pegawai
-        return redirect('employee.index');
+        return redirect('employee.index')-> with('status', 'Data Employee Telah Berhasil Ditambahkan!');
     }
 
     /**
@@ -56,7 +66,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($nik)
+    public function show()
     {
         //
     }
@@ -67,9 +77,21 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        if ($request->isMethod('POST')) {
+            $empl = $request->all();
+        }
+        $employee=DB::table('employee')->where('nik', $request->nik)->update([
+          'nik' => $request->nik,
+          'nama' => $request->nama,
+          'level' => $request->level,
+          'jabatan' => $request->jabatan,
+          'unit_kerja' => $request->unit_kerja,
+          'wilayah' => $request->wilayah,
+          'email' => $request->email,
+       ]);
+        return redirect('employee.index')-> with('status', 'Data Employee Telah Berhasil Diubah!');
     }
 
     /**
@@ -79,7 +101,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $nik)
+    public function update(Request $request)
     {
         //
     }
@@ -95,6 +117,6 @@ class EmployeeController extends Controller
         DB::table('employee')->where('nik', $nik)->delete();
 
         // alihkan halaman ke halaman kuadran
-        return redirect('employee.index');
+        return redirect('employee.index')-> with('status', 'Data Employee Telah Berhasil Dihapus!');
     }
 }

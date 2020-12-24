@@ -116,16 +116,17 @@
 
 <!-- Content Edit modal -->
 @foreach($kpi as $kpi)
-<div class="modal fade" id="editModal-{{$kpi->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit{{$kpi->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-            <h2 class="modal-title" id="exampleModalLabel">Tambah KPI</h2>
+            <h2 class="modal-title" id="exampleModalLabel">Edit KPI</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+
+
         <form method="POST" action="{{action('KpiController@edit')}}" id="editform">
           {{csrf_field()}}
 
@@ -162,7 +163,7 @@
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
           </div>
         </form>
-      </div>
+      ]
     </div>
   </div>
 </div>
@@ -182,11 +183,11 @@
                   <th>End Date</th>
               </tr>
           </thead>
+
           <tbody>
           @foreach ($kpi as $kpi)
             <tr>
-
-              <th>{{$loop-> iteration}}</th>
+              <td>{{$loop-> iteration}}</td>
               <td>{{$kpi->id}}</td>
               <td>{{$kpi->nama_kpi}}</td>
               <td>{{$kpi->description}}</td>
@@ -195,8 +196,8 @@
               <td>{{$kpi->start_date}}</td>
               <td>{{$kpi->end_date}}</td>
               <td >
-                  <a href="" class="btn btn-primary"data-toggle="modal" data-target="#editModal-{{$kpi->id}}" data-whatever="@getbootstrap">Edit</a>
-                  <a href="kpi.index.destroy{{$kpi->id }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">Delete</a> 
+                  <a class="btn btn-primary"data-toggle="modal" data-target="#edit{{$kpi->id}}" data-whatever="@getbootstrap">Edit</a>
+                  <a href="kpi.index.destroy{{$kpi->id }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">Delete</a>
               </td>
             </tr>
           @endforeach

@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -51,13 +51,13 @@
   p{
     margin: 150pt;
   }
-  button{
-    padding-left: 30pt;
-    margin-left: 20pt;
-    margin-right: 150pt;
-    margin-bottom: 30pt;
 
-}
+  div.btn-group{
+    padding-left: 30pt;
+    margin-left: 100pt;
+    margin-bottom: 30pt;
+    }
+
 label{
   margin-left: 10 pt;
 
@@ -78,11 +78,11 @@ label{
             <h4 class="text-center"> Aplikasi Manajemen Kinerja Individu Organisasi </h4>
               <h2 class="text-center font-italic"> Log In to <strong>AKIO</strong></h2>
 
-          <form method="POST" accept="{{url('login')}}" class="need-validation" novalidate="">
+          <form method="POST" action="{{Route('postlogin')}}" class="need-validation" novalidate="">
             {{csrf_field()}}
             <div class="input-group flex-nowrap">
               <div class="input-group-prepend "></div>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required autocomplete="username" autofocus>
+                <input type="text" class="form-control" placeholder="Username" name="username" aria-label="Username" aria-describedby="addon-wrapping" required autocomplete="username" autofocus>
                 @error('username')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -92,7 +92,7 @@ label{
 
             <div class="input-group flex-nowrap">
               <div class="input-group-prepend"></div>
-                <input type="password" class="form-control" value="" id="myinput" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping" required autocomplete="current-password">
+                <input type="password" class="form-control" name="password" value="" id="myinput" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping" required autocomplete="current-password">
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -142,10 +142,6 @@ label{
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
+
 </body>
 </html>

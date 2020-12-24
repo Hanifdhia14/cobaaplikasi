@@ -19,8 +19,6 @@
       margin-left: 100pt;
       margin-right: 30pt;
     }
-
-
   </style>
 
 
@@ -28,6 +26,8 @@
 
     <!-- Content Header (Page header) -->
         <h1>Master Kuadran <small>Imput Nama Kuadran</small></h1>
+    <div class="card">
+      <div class="card-header">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Tambah</button>
         <!-- Search form -->
         @if (session('status'))
@@ -91,7 +91,7 @@
             </div>
           </div>
         </div>
-<!-- End Content Tambah modal -->
+  <!-- End Content Tambah modal -->
 
   <!-- Content edit modal -->
     @foreach ($kuadran as $kdr)
@@ -111,7 +111,7 @@
             <div class="modal-body">
               <div class="form-group">
                 <label for="id" class="col-form-label">Id:</label>
-                <input name="id"  type="number" class="form-control" id ="id"placeholder="Masukkan Id" value="{{$kdr->id}}">
+                <input name="id"  type="number" class="form-control" id ="id" placeholder="Masukkan Id" value="{{$kdr->id}}">
               </div>
               <div class="form-group">
                 <label for="Kuadran" class="col-form-label">Nama Kuadran:</label>
@@ -136,7 +136,7 @@
         </div>
       </div>
       @endforeach
-<!-- End Content edit modal -->
+  <!-- End Content edit modal -->
 
         <!-- Content table data -->
 
@@ -180,9 +180,11 @@
                       </table>
 
 
-
-
       </div>
+
+    </div>
+
+  </div>
 
 <script type="text/javascript">
 $(document).ready(function() {

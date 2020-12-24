@@ -29,7 +29,7 @@ class KuadranController extends Controller
      */
     public function create(Request $request)
     {
-        //return view('kuadran.index');//return 'Bisa Submit';
+        //
     }
 
     /**

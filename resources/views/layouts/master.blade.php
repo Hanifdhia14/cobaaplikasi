@@ -24,6 +24,7 @@
 
 <body id="page-top">
     @include('layouts.header')
+
       <div id="wrapper">
 
           <!-- Left side column. contains the logo and sidebar -->
@@ -33,12 +34,17 @@
               <div class="container-fluid">
                   <!-- Content Wrapper. Contains page content -->
                   @yield('content')
+
+                  <div class="container-fluid">
+                    @include('layouts.footer')
+                  </div>
+
               </div>
 
 
       </div>
-      <!-- ./wrapper -->
-  @include('layouts.footer')
+
+
 
 
 

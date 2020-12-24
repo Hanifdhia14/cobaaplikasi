@@ -44,7 +44,7 @@ class KpiController extends Controller
         'polaritas' => 'required',
         'parameter' => 'required',
         'start_date' => 'required',
-        'end_date' => 'required',
+        'end_date' => 'required'
     ]);
         // insert data ke table pegawai
         DB::table('kpi11')->insert([
@@ -66,7 +66,7 @@ class KpiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
     }
