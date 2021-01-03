@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Kpi;
+
 class KpiController extends Controller
 {
     /**
@@ -15,8 +17,9 @@ class KpiController extends Controller
      */
     public function index()
     {
-        $kpi11 = DB::table('kpi11')->get();
-        return view('Kpi.index', ['kpi'=>$kpi11]);
+        //$kpi11 = DB::table('kpi11')->get();
+        $kpi = Kpi::all();
+        return view('Kpi.index', ['kpi'=>$kpi]);
     }
 
     /**
@@ -82,7 +85,7 @@ class KpiController extends Controller
         if ($request->isMethod('POST')) {
             $kpi = $request->all();
         }
-        $kpi=DB::table('kpi11')->where('id', $request->id)->update([
+        $kp=DB::table('kpi11')->where('id', $request->id)->update([
           'id' => $request->id,
           'nama_kpi' => $request->nama_kpi,
           'description' => $request->description,
@@ -101,7 +104,7 @@ class KpiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
     }

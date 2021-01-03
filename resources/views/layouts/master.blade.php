@@ -20,6 +20,7 @@
     <link href="sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 
+
 </head>
 
 <body id="page-top">
@@ -75,8 +76,12 @@
       } );
 
     </script>
-
-
+<script src="/datepicker/js/" charset="utf-8"></script>
+<script type="text/javascript">
+$('#sandbox-container .input-group.date').datepicker({
+  autoclose: true
+});
+</script>
 
 </body>
 

@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Kuadran;
+
 use Illuminate\Support\Facades\DB;
+
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class KuadranController extends Controller
 {
@@ -17,9 +21,8 @@ class KuadranController extends Controller
      **/
     public function index()
     {
-        $kuadran11 = DB::table('kuadran11')->get();
-        //$kuadran11 =kuadran11::all();
-        return view('kuadran.index', ['kuadran'=>$kuadran11]);
+        $kuadran = Kuadran::all();
+        return view('kuadran.index', ['kuadran'=>$kuadran]);
     }
 
     /**
@@ -50,10 +53,10 @@ class KuadranController extends Controller
           ]);
         // insert data ke table kuadran
         DB::table('kuadran11')->insert([
-       'id' => $request->id,
-       'kuadran' => $request->kuadran,
-       'start_date' => $request->start_date,
-       'end_date' => $request->end_date
+         'id' => $request ->id,
+         'kuadran' => $request->kuadran,
+         'start_date' => $request->start_date,
+         'end_date' => $request->end_date
   ]);
 
         // alihkan halaman ke halaman kuadran

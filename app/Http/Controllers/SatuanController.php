@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Satuan;
 use Illuminate\Support\Facades\DB;
 
 class SatuanController extends Controller
@@ -14,8 +15,8 @@ class SatuanController extends Controller
      */
     public function index()
     {
-        $satuan11= DB::table('satuan11')->get();
-        return view('satuan.index', ['satuan'=>$satuan11]);
+        $satuan = Satuan::all();
+        return view('satuan.index', ['satuan'=>$satuan]);
     }
 
     /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Employee;
+
 use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
@@ -15,7 +17,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee= DB::table('employee')->get();
+        $employee = Employee::all();
         return view('employee.index', ['employee'=>$employee]);
     }
 

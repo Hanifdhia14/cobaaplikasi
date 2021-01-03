@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Nilaimaksimal;
+
 use Illuminate\Support\Facades\DB;
 
 class NilaimaksimalController extends Controller
@@ -15,8 +17,8 @@ class NilaimaksimalController extends Controller
      */
     public function index()
     {
-        $nilaimaksimal11 = DB::table('nilaimaksimal11')->get();
-        return view('nilai_maksimal.index', ['nilai_maksimal'=>$nilaimaksimal11]);
+        $nilaimaksimal = Nilaimaksimal::all();
+        return view('nilai_maksimal.index', ['nilai_maksimal'=>$nilaimaksimal]);
     }
 
     /**
@@ -105,6 +107,6 @@ class NilaimaksimalController extends Controller
         DB::table('nilaimaksimal11')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman nilai_maksimal
-        return redirect('nilai_maksimal.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Diambahkan!');
+        return redirect('nilai_maksimal.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Dihapuskan!');
     }
 }

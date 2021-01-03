@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Document;
+
 use Illuminate\Support\Facades\DB;
 
 class DocumentController extends Controller
@@ -15,8 +17,8 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $document11 = DB::table('document11')->get();
-        return view('document.index', ['document'=>$document11]);
+        $document= Document::all();
+        return view('document.index', ['document'=>$document]);
     }
     /**
      * Show the form for creating a new resource.
@@ -69,7 +71,7 @@ class DocumentController extends Controller
     public function edit(Request $request)
     {
         if ($request->isMethod('POST')) {
-            $tp = $request->all();
+            $dcm = $request->all();
         }
         $document=DB::table('document11')->where('id', $request->id)->update([
         'id' => $request->id,
@@ -99,9 +101,9 @@ class DocumentController extends Controller
     public function destroy($id)
     {
         // menghapus data document berdasarkan id yang dipilih
-        DB::table('document11')->where('id', $id)->delete();
+        DB::table('$document11')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman document
-        return redirect('document.index')-> with('status', 'Data document Telah Berhasil Dihapuskan!');
+        return redirect('document.index')-> with('status', 'Data Document Telah Berhasil Dihapuskan!');
     }
 }

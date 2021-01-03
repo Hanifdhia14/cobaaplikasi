@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Tipenilai;
+
 use Illuminate\Support\Facades\DB;
 
 class TipepenilaianController extends Controller
@@ -15,8 +17,8 @@ class TipepenilaianController extends Controller
      */
     public function index()
     {
-        $tipepenilaian11 = DB::table('tipepenilaian11')->get();
-        return view('tipe_penilaian.index', ['tipe_penilaian'=>$tipepenilaian11]);
+        $tipenilai= Tipenilai::all();
+        return view('tipe_penilaian.index', ['tipe_penilaian'=>$tipenilai]);
     }
 
     /**

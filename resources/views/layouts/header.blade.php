@@ -1,9 +1,7 @@
 <header class="main-header">
 
-<style media="screen">
-div.nav-bar{
-  margin-left: 40pt;
-}
+
+
 </style>
 
   <!-- Topbar Navbar -->

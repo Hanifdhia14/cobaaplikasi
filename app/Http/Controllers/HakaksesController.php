@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\models\Hakakses;
+
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +39,9 @@ class HakaksesController extends Controller
      */
     public function index()
     {
-        $hakak= DB::table('hakak')->get();
-        return view('hakakses.index', ['hakak'=>$hakak]);
+        //$hakak= DB::table('hakak')->get();
+        $hakakses= Hakakses::all();
+        return view('hakakses.index', ['hakak'=>$hakakses]);
     }
 
     /**

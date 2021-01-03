@@ -5,7 +5,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -27,7 +27,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            Admin Interface
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -76,7 +76,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Addons
+            Admin Addons
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -93,10 +93,7 @@
                     <h6>Monitoring Screens:</h6>
                     <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> KPI</a></li>
                     <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> Employee</a></li>
-                    <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html"></a>
-                    <a class="collapse-item" href="blank.html"></a>
+
                   </ul>
                 </div>
             </div>
@@ -104,25 +101,87 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Charts</span></a>
         </li>
 
+
+
+
+
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          User Interface
+        </div>
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#userUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa fa-book"></i>
+                <span>Target Kerja </span>
+            </a>
+            <div id="userUtilities" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <ul class="treeview-menu">
+                        <h6 >Custom Utilities:</h6>
+                      <li><a href="{{url('user.settarget.index')}}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
+                      <li><a href="{{url('user.valtarget.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Admin Addons
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#userPages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Report Target</span>
+            </a>
+            <div id="userPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <ul class="treeview-menu">
+
+                    <h6>Monitoring Screens:</h6>
+                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
+                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i>#</a></li>
+
+                  </ul>
+                </div>
+            </div>
+        </li>
+
+
+
+
+
+
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="{{Route('logout')}}" onclick="return confirm('Apakah anda yakin ingin Keluar ?')">
-                <i class="fas fa-fw fa-table"></i>
+                <i class="fas fa-sign-out-alt "></i>  
                 <span>Log Out</span></a>
         </li>
-
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle" ></button>
-        </div>
+
+  <div class="d-md-inline">
+      <button class="rounded-circle border-0" id="sidebarToggle" ></button>
+  </div>
+
 
     </ul>
     <!-- End of Sidebar -->

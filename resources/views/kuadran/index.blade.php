@@ -2,7 +2,18 @@
 
 
   @section('content')
+
   <style media="screen">
+    div.content{
+      height: auto;
+    }
+    div.card{
+      height: 50rem;
+
+    }
+div.card-header{
+      height: 50rem
+    }
     h1{
       color: darkblue;
       margin-left: 20pt;
@@ -25,7 +36,8 @@
   <div class="content-wrapper">
 
     <!-- Content Header (Page header) -->
-        <h1>Master Kuadran <small>Imput Nama Kuadran</small></h1>
+        <h1>Master Kuadran <small> Imput Nama Kuadran</small> </h1>
+        <hr class="sidebar-divider">
     <div class="card">
       <div class="card-header">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Tambah</button>
@@ -55,7 +67,7 @@
 
                 <div class="form-group">
                   <label for="id" class="col-form-label">Id:</label>
-                  <input name="id"  type="number" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{old('id')}}">
+                  <input name="id"  type="text" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{old('id')}}">
                   @error('id')
                     <div class="invalid-feedback">{{$message}}</div>
                   @enderror
@@ -67,16 +79,15 @@
                     <div class="invalid-feedback">{{$message}}</div>
                   @enderror
                 </div>
-                <div class="form-group">
+
+                <div class="form-group date">
                   <label for="start_date" class="col-form-label">Start Date:</label>
-                  <input name="start_date" type="datetime" class="form-control @error('start_date')is-invalid @enderror " id="start_date" placeholder="Masukkan Start Date" value="{{old('start_date')}}">
-                  @error('start_date')
-                    <div class="invalid-feedback">{{$message}}</div>
-                  @enderror
+                  <input name="start_date" type="text" class="form-control" id="tgl">
                 </div>
+
                 <div class="form-group">
                   <label for="end_date" class="col-form-label">End Date:</label>
-                  <input name="end_date" type="datetime" class="form-control @error('end_date')is-invalid @enderror " id="end_date" placeholder="Masukkan End Date" value="{{old('endat')}}">
+                  <input name="end_date" type="text" class="form-control @error('end_date')is-invalid @enderror " id="tgl" placeholder="Masukkan End Date" value="{{old('end_date')}}">
                   @error('end_date')
                     <div class="invalid-feedback">{{$message}}</div>
                   @enderror
@@ -111,20 +122,24 @@
             <div class="modal-body">
               <div class="form-group">
                 <label for="id" class="col-form-label">Id:</label>
-                <input name="id"  type="number" class="form-control" id ="id" placeholder="Masukkan Id" value="{{$kdr->id}}">
+                <input name="id"  type="text" class="form-control" id ="id" placeholder="Masukkan Id" value="{{$kdr->id}}">
               </div>
+
               <div class="form-group">
                 <label for="Kuadran" class="col-form-label">Nama Kuadran:</label>
-                <input name="kuadran"  type="text" class="form-control" id="kuadran" placeholder="Masukkan Kuadran"        value="{{$kdr->kuadran}}">
+                <input name="kuadran"  type="text" class="form-control" id="kuadran" placeholder="Masukkan Kuadran"value="{{$kdr->kuadran}}">
               </div>
+
               <div class="form-group">
                 <label for="start_date" class="col-form-label">Start Date:</label>
-                <input name="start_date" type="datetime" class="form-control" id="start_date" placeholder="Masukkan Start Date" value="{{$kdr->start_date}}">
+                <input name="start_date" type="datetime" class="form-control" id="datepicker" placeholder="Masukkan Start Date" value="{{$kdr->start_date}}">
               </div>
+
               <div class="form-group" data-provide="datepicker">
                 <label for="end_date" class="col-form-label">End Date:</label>
-                <input name="end_date" type="datetime" class="form-control" id="end_date" placeholder="Masukkan End Date" value="{{$kdr->end_date}}">
+                <input name="end_date" type="datetime" class="form-control" id="datepicker" placeholder="Masukkan End Date" value="{{$kdr->end_date}}">
               </div>
+
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Ubah Data</button>
                 <button type="submit" class="btn btn-danger" data-dismiss="modal">Batal</button>
@@ -193,4 +208,8 @@ $('#example').DataTable( {
   } );
 
 </script>
-  @endsection
+
+
+
+
+@endsection
