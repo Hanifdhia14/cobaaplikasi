@@ -63,9 +63,9 @@
               {{csrf_field()}}
 
             <div class="form-group">
-                <label for="id" class="col-form-label">Id:</label>
-            <input name="id" type="number" class="form-control  @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{old('id')}}">
-            @error('id')
+                <label for="kode_satuan" class="col-form-label">Kode Satuan:</label>
+            <input name="kode_satuan" type="text" class="form-control  @error('kode_satuan')is-invalid @enderror" id="kode_satuan" placeholder="Masukkan Id" value="{{old('kode_satuan')}}">
+            @error('kode_satuan')
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
             </div>
@@ -106,8 +106,8 @@
         {{csrf_field()}}
 
         <div class="form-group">
-        <label for="id" class="col-form-label">Id:</label>
-        <input name="id" type="number" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{$stn->id}}">
+        <label for="kode_satuan" class="col-form-label">Kode Satuan:</label>
+        <input name="kode_satuan" type="text" class="form-control @error('kode_satuan')is-invalid @enderror" id="kode_satuan" placeholder="Masukkan Id" value="{{$stn->kode_satuan}}">
         </div>
 
         <div class="form-group">
@@ -135,16 +135,16 @@
         <thead>
         <tr>
         <th >No</th>
-        <th >Id</th>
+        <th >Kode Satuan</th>
         <th >Satuan</th>
-        <th class="text-center">Aksi</th>
+        <th >Aksi</th>
         </tr>
         </thead>
         <tbody>
         @foreach ($satuan as $stn)
         <tr>
         <th >{{$loop-> iteration}}</th>
-        <td >{{$stn->id}}</td>
+        <td >{{$stn->kode_satuan}}</td>
         <td >{{$stn->satuan}}</td>
         <td >
             <a href="" class="btn btn-primary"data-toggle="modal" data-target="#editModal-{{$stn->id}}" data-whatever="@getbootstrap">Edit</a>
@@ -152,8 +152,15 @@
         </td>
         </tr>
         @endforeach
-
         </tbody>
+        <tfoot>
+            <tr>
+                <th>No</th>
+                <th>Kode Satuan</th>
+                <th>Satuan</th>
+                <th>Aksi</th>
+            </tr>
+        </tfoot>
         </table>
 
 

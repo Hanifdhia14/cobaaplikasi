@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nilaimaksimal extends Model
 {
-    protected $table = 'nilaimaksimal11';
+    protected $table = 'nilaimax';
+    protected $fillable= ['kode_nmax', 'nilai_maksimal',];
 }

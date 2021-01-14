@@ -21,18 +21,18 @@
   }
 
 
-
   </style>
 
 <div ="container-fluid">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-        <h1>Setting Target <small>Input Target</small></h1>
+        <h1>Input Nilai Kerja</h1>
           <hr class="sidebar-divider">
 <div class="card">
   <div class="card-header">
+    <div class="col-lg-12">
 
-
+    </div>
   </div>
 </div>
 
@@ -43,6 +43,7 @@ $(document).ready(function() {
 $('#example').DataTable( {
     } );
   } );
-
 </script>
+
+
   @endsection

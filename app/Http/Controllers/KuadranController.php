@@ -46,19 +46,18 @@ class KuadranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-              'id' => 'required',
+              'kode_kuadran' => 'required',
               'kuadran' => 'required',
               'start_date' => 'required',
               'end_date' => 'required',
           ]);
-        // insert data ke table kuadran
-        DB::table('kuadran11')->insert([
-         'id' => $request ->id,
-         'kuadran' => $request->kuadran,
-         'start_date' => $request->start_date,
-         'end_date' => $request->end_date
-  ]);
 
+        $kuadran = new kuadran;
+        $kuadran-> kode_kuadran = $request-> kode_kuadran;
+        $kuadran-> kuadran = $request-> kuadran;
+        $kuadran-> start_date = $request-> start_date;
+        $kuadran-> end_date = $request-> end_date;
+        $kuadran->save();
         // alihkan halaman ke halaman kuadran
         return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Ditambahkan!');
     }
@@ -81,17 +80,24 @@ class KuadranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request, Kuadran $kuadran)
     {
+        $request->validate([
+            'kode_kuadran' => 'required',
+            'kuadran' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
         if ($request->isMethod('POST')) {
             $kdr = $request->all();
         }
-        $kuadran=DB::table('kuadran11')->where('id', $request->id)->update([
-         'id' => $request->id,
-         'kuadran' => $request->kuadran,
-         'start_date' => $request->start_date,
-         'end_date' => $request->end_date
-         ]);
+        Kuadran::where('kode_kuadran', $request->kode_kuadran)
+          ->update([
+            'kode_kuadran'=> $request->kode_kuadran,
+            'kuadran'=> $request->kuadran,
+            'start_date'=> $request->start_date,
+            'end_date'=> $request->end_date
+        ]);
         return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Diubah!');
     }
 
@@ -116,7 +122,7 @@ class KuadranController extends Controller
     public function destroy($id)
     {
         // menghapus data Kuadran berdasarkan id yang dipilih
-        DB::table('kuadran11')->where('id', $id)->delete();
+        DB::table('kuadran1')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman kuadran
         return redirect('kuadran.index')-> with('status', 'Data Kuadran Telah Berhasil Dihapuskan!');

@@ -37,14 +37,14 @@ class SatuanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'id' => 'required',
+        'kode_satuan' => 'required',
         'satuan' => 'required',
     ]);
         // insert data ke table pegawai
-        DB::table('satuan11')->insert([
-       'id' => $request->id,
-       'satuan' => $request->satuan,
-        ]);
+        $satuan = new satuan;
+        $satuan-> kode_satuan = $request-> kode_satuan;
+        $satuan-> satuan = $request-> satuan;
+        $satuan->save();
         // alihkan halaman ke halaman pegawai
         return redirect('satuan.index')-> with('status', 'Data Satuan Penilaian Telah Berhasil Ditambahkan!');
     }
@@ -66,15 +66,21 @@ class SatuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request, Satuan $satuan)
     {
+        $request->validate([
+      'kode_satuan' => 'required',
+      'satuan' => 'required',
+        ]);
         if ($request->isMethod('POST')) {
             $tp = $request->all();
         }
-        $satuan=DB::table('satuan11')->where('id', $request->id)->update([
-     'id' => $request->id,
-     'satuan' => $request->satuan,
-     ]);
+        Satuan::where('kode_satuan', $request->kode_satuan)
+          ->update([
+            'kode_satuan'=> $request->kode_satuan,
+            'satuan'=> $request->satuan
+        ]);
+
         return redirect('satuan.index')-> with('status', 'Data Satuan Penilaian Telah Berhasil Diubah!');
     }
 
@@ -99,7 +105,7 @@ class SatuanController extends Controller
     public function destroy($id)
     {
         // menghapus data Kuadran berdasarkan id yang dipilih
-        DB::table('satuan11')->where('id', $id)->delete();
+        DB::table('satuan1')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman kuadran
         return redirect('satuan.index')-> with('status', 'Data Satuan Penilaian Telah Berhasil Dihapuskan!');

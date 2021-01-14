@@ -43,7 +43,7 @@
 
         <div class="card">
           <div class="card-header">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Tambah</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"> Tambah </button>
 
             @if (session('status'))
                 <div class="alert alert-success">
@@ -237,7 +237,7 @@
                   <td >{{$empl->unit_kerja}}</td>
                   <td >{{$empl->wilayah}}</td>
                   <td >{{$empl->email}}</td>
-                  <td class="" >
+                  <td class="">
                       <a class="btn btn-primary"data-toggle="modal" data-target="#editmodal{{$empl->nik}}" data-whatever="@getbootstrap">Edit</a>
                       <a href="employee.index.destroy{{$empl->nik }}" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin mengapus data ?')">Delete</a>
                   </td>

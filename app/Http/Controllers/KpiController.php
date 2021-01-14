@@ -41,7 +41,7 @@ class KpiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'id' => 'required',
+        'kode_kpi' => 'required',
         'nama_kpi' => 'required',
         'description' => 'required',
         'polaritas' => 'required',
@@ -49,16 +49,15 @@ class KpiController extends Controller
         'start_date' => 'required',
         'end_date' => 'required'
     ]);
-        // insert data ke table pegawai
-        DB::table('kpi11')->insert([
-         'id' => $request->id,
-         'nama_kpi' => $request->nama_kpi,
-         'description' => $request->description,
-         'polaritas' => $request->polaritas,
-         'parameter' => $request->parameter,
-         'start_date' => $request->start_date,
-         'end_date' => $request->end_date
-  ]);
+        $kpi = new kpi;
+        $kpi-> kode_kpi = $request-> kode_kpi;
+        $kpi-> nama_kpi = $request-> nama_kpi;
+        $kpi-> description = $request-> description;
+        $kpi-> polaritas= $request-> polaritas;
+        $kpi-> parameter= $request-> parameter;
+        $kpi-> start_date = $request-> start_date;
+        $kpi-> end_date = $request-> end_date;
+        $kpi->save();
         // alihkan halaman ke halaman pegawai
         return redirect('kpi.index')-> with('status', 'Data KPI Telah Berhasil Ditambahkan!');
     }
@@ -82,17 +81,27 @@ class KpiController extends Controller
      */
     public function edit(Request $request)
     {
+        $request->validate([
+      'kode_kpi' => 'required',
+      'nama_kpi' => 'required',
+      'description' => 'required',
+      'polaritas' => 'required',
+      'parameter' => 'required',
+      'start_date' => 'required',
+      'end_date' => 'required'
+      ]);
         if ($request->isMethod('POST')) {
             $kpi = $request->all();
         }
-        $kp=DB::table('kpi11')->where('id', $request->id)->update([
-          'id' => $request->id,
-          'nama_kpi' => $request->nama_kpi,
-          'description' => $request->description,
-          'polaritas' => $request->polaritas,
-          'parameter' => $request->parameter,
-          'start_date' => $request->start_date,
-          'end_date' => $request->end_date
+        Kpi::where('kode_kpi', $request->kode_kpi)
+            ->update([
+              'kode_kpi'=> $request-> kode_kpi,
+              'nama_kpi'=> $request-> nama_kpi,
+              'description' => $request-> description,
+              'polaritas' => $request-> polaritas,
+              'parameter' => $request-> parameter,
+              'start_date'=> $request-> start_date,
+              'end_date'=> $request-> end_date
           ]);
         return redirect('kpi.index')-> with('status', 'Data kpi Telah Berhasil Diubah!');
     }
@@ -118,7 +127,7 @@ class KpiController extends Controller
     public function destroy($id)
     {
         // menghapus data kpi berdasarkan id yang dipilih
-        DB::table('kpi11')->where('id', $id)->delete();
+        DB::table('kpi1')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman kpi
         return redirect('kpi.index')-> with('status', 'Data KPI Telah Berhasil Dihapuskan!');

@@ -66,12 +66,13 @@ div.card-header{
                 {{csrf_field()}}
 
                 <div class="form-group">
-                  <label for="id" class="col-form-label">Id:</label>
-                  <input name="id"  type="text" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{old('id')}}">
-                  @error('id')
+                  <label for="kode_kuadran" class="col-form-label">Kode Kuadran:</label>
+                  <input name="kode_kuadran"  type="text" class="form-control @error('Kode_kuadran')is-invalid @enderror" id="id" placeholder="Masukkan kode" value="{{old('kode_kuadran')}}">
+                  @error('Kode_kuadran')
                     <div class="invalid-feedback">{{$message}}</div>
                   @enderror
                 </div>
+
                 <div class="form-group">
                   <label for="Kuadran" class="col-form-label">Nama Kuadran:</label>
                   <input name="kuadran"  type="text" class="form-control @error('kuadran')is-invalid @enderror" id="kuadran" placeholder="Masukkan Kuadran"  value="{{old('kuadran')}}">
@@ -82,12 +83,12 @@ div.card-header{
 
                 <div class="form-group date">
                   <label for="start_date" class="col-form-label">Start Date:</label>
-                  <input name="start_date" type="text" class="form-control" id="tgl">
+                  <input name="start_date" type="date" class="form-control" id="kuadran"placeholder="Masukkan End Date" value="{{old('end_date')}}">
                 </div>
 
                 <div class="form-group">
                   <label for="end_date" class="col-form-label">End Date:</label>
-                  <input name="end_date" type="text" class="form-control @error('end_date')is-invalid @enderror " id="tgl" placeholder="Masukkan End Date" value="{{old('end_date')}}">
+                  <input name="end_date" type="date" class="form-control @error('end_date')is-invalid @enderror " id="kuadran" placeholder="Masukkan End Date" value="{{old('end_date')}}">
                   @error('end_date')
                     <div class="invalid-feedback">{{$message}}</div>
                   @enderror
@@ -121,23 +122,23 @@ div.card-header{
 
             <div class="modal-body">
               <div class="form-group">
-                <label for="id" class="col-form-label">Id:</label>
-                <input name="id"  type="text" class="form-control" id ="id" placeholder="Masukkan Id" value="{{$kdr->id}}">
+                <label for="kode_kuadran" class="col-form-label">Kode Kuadran:</label>
+                <input name="kode_kuadran"  type="text" class="form-control" id ="kode_kuadran" placeholder="Masukkan Kode" value="{{$kdr->kode_kuadran}}">
               </div>
 
               <div class="form-group">
-                <label for="Kuadran" class="col-form-label">Nama Kuadran:</label>
+                <label for="kuadran" class="col-form-label">Nama Kuadran:</label>
                 <input name="kuadran"  type="text" class="form-control" id="kuadran" placeholder="Masukkan Kuadran"value="{{$kdr->kuadran}}">
               </div>
 
               <div class="form-group">
                 <label for="start_date" class="col-form-label">Start Date:</label>
-                <input name="start_date" type="datetime" class="form-control" id="datepicker" placeholder="Masukkan Start Date" value="{{$kdr->start_date}}">
+                <input name="start_date" type="date" class="form-control" id="kuadran" placeholder="Masukkan Start Date" value="{{$kdr->start_date}}">
               </div>
 
               <div class="form-group" data-provide="datepicker">
                 <label for="end_date" class="col-form-label">End Date:</label>
-                <input name="end_date" type="datetime" class="form-control" id="datepicker" placeholder="Masukkan End Date" value="{{$kdr->end_date}}">
+                <input name="end_date" type="date" class="form-control" id="kuadran" placeholder="Masukkan End Date" value="{{$kdr->end_date}}">
               </div>
 
               <div class="modal-footer">
@@ -159,7 +160,7 @@ div.card-header{
                         <thead>
                           <tr>
                             <th>No</th>
-                            <th>Id</th>
+                            <th>Kode Kuadran</th>
                             <th>Kuadran</th>
                             <th>Start Date</th>
                             <th>End Date</th>
@@ -171,7 +172,7 @@ div.card-header{
                         @foreach ($kuadran as $kdr)
                           <tr>
                             <td >{{$loop-> iteration}}</th>
-                            <td >{{$kdr ->id}}</td>
+                            <td >{{$kdr ->kode_kuadran}}</td>
                             <td >{{$kdr ->kuadran}}</td>
                             <td >{{$kdr ->start_date}}</td>
                             <td >{{$kdr ->end_date}}</td>
@@ -185,7 +186,7 @@ div.card-header{
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Id</th>
+                                <th>Kode Kuadran</th>
                                 <th>Kuadran</th>
                                 <th>Start date</th>
                                 <th>End date</th>
@@ -208,7 +209,6 @@ $('#example').DataTable( {
   } );
 
 </script>
-
 
 
 

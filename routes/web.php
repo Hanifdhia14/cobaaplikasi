@@ -59,7 +59,7 @@ Route::get('ph', function () {
     Route::get('document.index', 'DocumentController@index');
     Route::POST('document.index.store', 'DocumentController@store');
     Route::match(['get', 'POST'], 'document.index.edit', 'DocumentController@edit');
-    Route::get('document.index.destroy{$id}', 'DocumentController@destroy');
+    Route::get('document.index.destroy{id}', 'DocumentController@destroy');
 
 //Data Employee
     Route::get('employee.index', 'EmployeeController@index');
@@ -81,6 +81,12 @@ Route::get('ph', function () {
 
 // User Interface
 // Settanget
-Route::get('user.settarget.index', 'SettargetController@index');
+Route::get('user.settarget_user.index', 'SettargetController@index');
+Route::POST('user.settarget_user.index', 'SettargetController@store');
+Route::get('user.settarget_user.index.destroy{id_set_target}', 'SettargetController@destroy');
+Route::match(['get', 'POST'], 'user.settarget_user.index', 'SettargetController@edit');
+
 //Validasi Target
 Route::get('user.valtarget.index', 'ValtargetController@index');
+// Nilai_target
+Route::get('user.nilai_target.index', 'Nilai_targetController@index');

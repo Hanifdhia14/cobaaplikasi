@@ -20,8 +20,8 @@
     font-style: article;
   }
   button{
-    margin-bottom:20pt;
-    margin-top: 20pt;
+    margin-top:10pt;
+    margin-bottom: 20pt;
     margin-left: 50pt;
 
   }
@@ -66,9 +66,9 @@
           {{csrf_field()}}
 
           <div class="form-group">
-            <label for="id" class="col-form-label">Id:</label>
-            <input name="id" type="text" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{old('id')}}">
-            @error('id')
+            <label for="kode_kpi" class="col-form-label">Kode KPI:</label>
+            <input name="kode_kpi" type="text" class="form-control @error('kode_kpi')is-invalid @enderror" id="kode_kpi" placeholder="Masukkan Kode" value="{{old('kode_kpi')}}">
+            @error('kode_kpi')
               <div class="invalid-feedback">{{$message}}</div>
             @enderror
           </div>
@@ -109,14 +109,14 @@
           </div>
           <div class="form-group">
             <label for="start_date" class="col-form-label">Start Date:</label>
-            <input name="start_date"type="datetime" class="form-control @error('start_date')is-invalid @enderror" id="start_date" placeholder="Masukkan Start Date" value="{{old('start_date')}}">
+            <input name="start_date"type="date" class="form-control @error('start_date')is-invalid @enderror" id="kpi" placeholder="Masukkan Start Date" value="{{old('start_date')}}">
             @error('start_date')
               <div class="invalid-feedback">{{$message}}</div>
             @enderror
           </div>
           <div class="form-group">
             <label for="end_date" class="col-form-label">End Date:</label>
-            <input name="end_date"type="datetime" class="form-control @error('end_date')is-invalid @enderror" id="end_date" placeholder="Masukkan End Date" value="{{old('end_date')}}">
+            <input name="end_date"type="date" class="form-control @error('end_date')is-invalid @enderror" id="kpi" placeholder="Masukkan End Date" value="{{old('end_date')}}">
             @error('end_date')
               <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -151,8 +151,8 @@
       {{csrf_field()}}
 
       <div class="form-group">
-        <label for="id" class="col-form-label">Id:</label>
-        <input name="id" type="text" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{$kp->id}}">
+        <label for="kode_kpi" class="col-form-label">Kode KPI:</label>
+        <input name="kode_kpi" type="text" class="form-control @error('kode_kpi')is-invalid @enderror" id="kode_kpi" placeholder="Masukkan Id" value="{{$kp->kode_kpi}}">
       </div>
 
       <div class="form-group">
@@ -181,16 +181,16 @@
 
       <div class="form-group">
         <label for="start_date" class="col-form-label">Start Date:</label>
-        <input name="start_date"type="datetime" class="form-control @error('start_date')is-invalid @enderror" id="start_date" placeholder="Masukkan Start Date" value="{{$kp->start_date}}">
+        <input name="start_date" type="date" class="form-control @error('start_date')is-invalid @enderror" id="kpi" placeholder="Masukkan Start Date" value="{{$kp->start_date}}">
       </div>
 
       <div class="form-group">
         <label for="end_date" class="col-form-label">End Date:</label>
-        <input name="end_date"type="datetime" class="form-control @error('end_date')is-invalid @enderror" id="end_date" placeholder="Masukkan End Date" value="{{$kp->end_date}}">
+        <input name="end_date" type="date" class="form-control @error('end_date')is-invalid @enderror" id="kpi" placeholder="Masukkan End Date" value="{{$kp->end_date}}">
       </div>
 
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Buat</button>
+        <button type="submit" class="btn btn-primary">Ubah</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
       </div>
     </form>
@@ -205,7 +205,7 @@
       <thead >
           <tr>
               <th>No</th>
-              <th>Id</th>
+              <th>Kode KPI</th>
               <th>Nama KPI</th>
               <th>Deskripsi</th>
               <th>Polaritas</th>
@@ -220,7 +220,7 @@
       @foreach ($kpi as $kp)
         <tr>
           <td>{{$loop-> iteration}}</td>
-          <td>{{$kp ->id}}</td>
+          <td>{{$kp ->kode_kpi}}</td>
           <td>{{$kp ->nama_kpi}}</td>
           <td>{{$kp ->description}}</td>
           <td>{{$kp ->polaritas}}</td>
@@ -237,7 +237,7 @@
       </tbody>
       <tfoot>
           <tr>
-            <th>Id</th>
+            <th>Kode KPI</th>
             <th>Nama KPI</th>
             <th>Deskripsi</th>
             <th>Polaritas</th>
@@ -264,4 +264,5 @@ $('#example').DataTable( {
   } );
 
 </script>
+
   @endsection

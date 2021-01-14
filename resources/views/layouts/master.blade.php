@@ -77,12 +77,14 @@
 
     </script>
 <script src="/datepicker/js/" charset="utf-8"></script>
-<script type="text/javascript">
-$('#sandbox-container .input-group.date').datepicker({
-  autoclose: true
+
+<script>
+$(function() {
+    $( "#kuadran","#kpi","#tgl_q1", "#tgl_q2", "#tgl_q3","#tgl_q4","#tgl_target_semester1", "#tgl_target_semester2","#tgl_target_tahun_unit" ).datepicker({
+        dateFormat: "yy-mm-dd"
+    });
 });
 </script>
-
 </body>
 
 </html>

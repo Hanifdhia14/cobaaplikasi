@@ -91,8 +91,8 @@
                   <ul class="treeview-menu">
 
                     <h6>Monitoring Screens:</h6>
-                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> KPI</a></li>
-                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> Employee</a></li>
+                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> KPI</a></li>
+                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Employee</a></li>
 
                   </ul>
                 </div>
@@ -128,8 +128,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <ul class="treeview-menu">
                         <h6 >Custom Utilities:</h6>
-                      <li><a href="{{url('user.settarget.index')}}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
-                      <li><a href="{{url('user.valtarget.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
+                      <li><a href="{{url('user.settarget_user.index')}}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
+                      <li><a href="{{url('user.settarget_user.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
                     </ul>
                 </div>
             </div>
@@ -139,7 +139,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Admin Addons
+          User Addons
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -154,8 +154,63 @@
                   <ul class="treeview-menu">
 
                     <h6>Monitoring Screens:</h6>
-                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
-                    <li><a href="" class="collapse-item"><i class="fa fa-circle-o"></i>#</a></li>
+                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
+                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i>#</a></li>
+
+                  </ul>
+                </div>
+            </div>
+        </li>
+
+
+
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Leader Interface
+        </div>
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#leaderUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa fa-book"></i>
+                <span>Target Kerja </span>
+            </a>
+            <div id="leaderUtilities" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <ul class="treeview-menu">
+                        <h6 >Custom Utilities:</h6>
+                      <li><a href="#" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
+                      <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
+                      <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Approve Set Kerja</a></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Leader Addons
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#leaderPages"
+                aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Report Target</span>
+            </a>
+            <div id="leaderPages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <ul class="treeview-menu">
+
+                    <h6>Monitoring Screens:</h6>
+                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
+                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i>#</a></li>
 
                   </ul>
                 </div>
@@ -167,10 +222,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="{{Route('logout')}}" onclick="return confirm('Apakah anda yakin ingin Keluar ?')">
-                <i class="fas fa-sign-out-alt "></i>  
+                <i class="fas fa-sign-out-alt "></i>
                 <span>Log Out</span></a>
         </li>
         <!-- Divider -->

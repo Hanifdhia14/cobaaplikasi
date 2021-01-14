@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNilaimaksimal11Table extends Migration
+class CreateTipenilai1Table extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateNilaimaksimal11Table extends Migration
      */
     public function up()
     {
-        Schema::create('nilaimaksimal11', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('nilai_maksimal');
+        Schema::create('tipenilai1', function (Blueprint $table) {
+            $table->id();
+            $table->char('kode_nilai');
+            $table->string('tipe_penilaian');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateNilaimaksimal11Table extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nilaimaksimal11');
+        Schema::dropIfExists('tipenilai1');
     }
 }

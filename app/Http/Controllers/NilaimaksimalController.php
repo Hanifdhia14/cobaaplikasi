@@ -40,15 +40,13 @@ class NilaimaksimalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'id' => 'required',
+        'kode_nmax' => 'required',
         'nilai_maksimal'=> 'required',
     ]);
-        // insert data ke table Nilaisimal
-        DB::table('nilaimaksimal11')->insert([
-         'id' => $request->id,
-         'nilai_maksimal' => $request->nilai_maksimal,
-
-  ]);
+        $nilaimaksimal = new nilaimaksimal;
+        $nilaimaksimal-> kode_nmax = $request-> kode_nmax;
+        $nilaimaksimal-> nilai_maksimal = $request-> nilai_maksimal;
+        $nilaimaksimal->save();
         // alihkan halaman ke halaman Nilai Maksimal
         return redirect('nilai_maksimal.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Diambahkan!');
     }
@@ -70,14 +68,19 @@ class NilaimaksimalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request, Nilaimaksimal $nilaimaksimal)
     {
+        $request->validate([
+      'kode_nmax' => 'required',
+      'nilai_maksimal'=> 'required',
+        ]);
         if ($request->isMethod('POST')) {
             $tp = $request->all();
         }
-        $nilai_maksimal=DB::table('nilaimaksimal11')->where('id', $request->id)->update([
-        'id' => $request->id,
-        'nilai_maksimal' => $request->nilai_maksimal,
+        Nilaimaksimal::where('kode_nmax', $request->kode_nmax)
+          ->update([
+            'kode_nmax'=> $request->kode_nmax,
+            'nilai_maksimal'=> $request->nilai_maksimal
         ]);
         return redirect('nilai_maksimal.index')-> with('status', 'Data Nilai Maksimal Telah Berhasil Diubah!');
     }
@@ -104,7 +107,7 @@ class NilaimaksimalController extends Controller
     public function destroy($id)
     {
         // menghapus data nilai_maksimal berdasarkan id yang dipilih
-        DB::table('nilaimaksimal11')->where('id', $id)->delete();
+        DB::table('nilaimax')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman nilai_maksimal
         return redirect('nilai_maksimal.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Dihapuskan!');

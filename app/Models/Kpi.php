@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kpi extends Model
 {
-    protected $table = 'kpi11';
+    protected $table = 'kpi1';
+    protected $fillable= ['kode_kpi', 'nama_kpi', 'start_date', 'end_date'];
 }

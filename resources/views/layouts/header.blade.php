@@ -1,17 +1,28 @@
+
 <header class="main-header">
+<style media="screen">
+  nav{
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+img{
+  background-image: url('/public/logo_asdp.png');
 
-
-
+}
 </style>
+
+
 
   <!-- Topbar Navbar -->
   <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="/public/logo_asdp.png" alt="" class="d-inline-block align-top">
-        ASDP Indonesia
+                <img src="/public/logo_asdp.png" alt="">
+                ASDP Indonesia
+
       </a>
-      <li class="nav-item dropdown no-arrow">
+
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
               <img class="img-profile rounded-circle" src="img/undraw_profile.svg">

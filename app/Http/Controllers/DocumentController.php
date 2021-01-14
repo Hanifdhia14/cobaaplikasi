@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Document;
 
+
 use Illuminate\Support\Facades\DB;
 
 class DocumentController extends Controller
@@ -39,14 +40,14 @@ class DocumentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'id' => 'required',
+          'kode_document' => 'required',
           'document' => 'required',
       ]);
         // insert data ke table document
-        DB::table('document11')->insert([
-     'id' => $request->id,
-     'document' => $request->document,
-      ]);
+        $dokumen = new dokumen;
+        $dokumen-> kode_document = $request-> kode_document;
+        $dokumen-> document = $request-> document;
+        $dokumen->save();
         // alihkan halaman ke halaman document
         return redirect('document.index')-> with('status', 'Data document Telah Berhasil Diubah!');
     }
@@ -68,15 +69,26 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request, Document $dokumen)
     {
+        $request->validate([
+        'kode_document' => 'required',
+        'document' => 'required',
+          ]);
         if ($request->isMethod('POST')) {
             $dcm = $request->all();
         }
-        $document=DB::table('document11')->where('id', $request->id)->update([
-        'id' => $request->id,
-        'document' => $request->document,
+        //  $document=DB::table('dokumen')->where('kode_document', $request-> kode_document)->update([
+        //'kode_document' => $request-> kode_document,
+        //  'document' => $request-> document,
+        //  ]);
+        Document::where('kode_document', $request->kode_document)
+          ->update([
+            'kode_document'=> $request-> kode_document,
+            'document'=> $request-> document
         ]);
+
+
         return redirect('document.index')-> with('status', 'Data document Telah Berhasil Diubah!');
     }
 
@@ -101,8 +113,8 @@ class DocumentController extends Controller
     public function destroy($id)
     {
         // menghapus data document berdasarkan id yang dipilih
-        DB::table('$document11')->where('id', $id)->delete();
-
+        //DB::table('dokumen')->where('id', $id)->delete();
+        Document::destroy($document->id);
         // alihkan halaman ke halaman document
         return redirect('document.index')-> with('status', 'Data Document Telah Berhasil Dihapuskan!');
     }

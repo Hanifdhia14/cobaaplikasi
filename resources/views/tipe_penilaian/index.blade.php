@@ -19,11 +19,10 @@
     margin-left: 20pt;
     font-style: article;
   }
-  button.btn{
-    margin-bottom:30pt;
-    margin-top: 20pt;
+  button{
+    margin-top:10pt;
+    margin-bottom: 20pt;
     margin-left: 50pt;
-
   }
   table{
     margin-top: 50pt;
@@ -63,9 +62,9 @@
         {{csrf_field()}}
 
             <div class="form-group">
-              <label for="id" class="col-form-label">Id:</label>
-              <input name="id"type="text" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{old('id')}}">
-              @error('id')
+              <label for="kode_nilai" class="col-form-label">Kode Nilai:</label>
+              <input name="kode_nilai"type="text" class="form-control @error('kode_nilai')is-invalid @enderror" id="kode_nilai" placeholder="Masukkan Id" value="{{old('kode_nilai')}}">
+              @error('kode_nilai')
                 <div class="invalid-feedback">{{$message}}</div>
               @enderror
             </div>
@@ -108,9 +107,9 @@
       {{csrf_field()}}
         <div class="modal-body">
           <div class="form-group">
-              <label for="id" class="col-form-label">Id:</label>
-              <input name="id"type="text" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{$tp->id}}">
-              @error('id')
+              <label for="kode_nilai" class="col-form-label">Kode Nilai:</label>
+              <input name="kode_nilai"type="text" class="form-control @error('kode_nilai')is-invalid @enderror" id="kode_nilai" placeholder="Masukkan Id" value="{{$tp->kode_nilai}}">
+              @error('kode_nilai')
               <div class="invalid-feedback">{{$message}}</div>
               @enderror
           </div>
@@ -142,16 +141,16 @@
       <thead>
       <tr>
         <th >No</th>
-        <th >Id</th>
+        <th >kode_nilai</th>
         <th >Tipe Penilaian</th>
-        <th class="text-center" >Aksi</th>
+        <th >Aksi</th>
       </tr>
       </thead>
       <tbody>
       @foreach ($tipe_penilaian as $tp)
       <tr>
         <th >{{$loop->iteration}}</th>
-        <td >{{$tp->id}}</td>
+        <td >{{$tp->kode_nilai}}</td>
         <td >{{$tp->tipe_penilaian}}</td>
         <td >
             <a href="" class="btn btn-primary"data-toggle="modal" data-target="#editModal-{{$tp->id}}" data-whatever="@getbootstrap">Edit</a>
@@ -163,7 +162,7 @@
       <tfoot>
       <tr>
         <th >No</th>
-        <th >Id</th>
+        <th >kode_nilai</th>
         <th >Tipe Penilaian</th>
         <th >Aksi</th>
       </tr>

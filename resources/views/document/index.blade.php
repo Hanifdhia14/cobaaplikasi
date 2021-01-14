@@ -19,11 +19,10 @@
     margin-left: 20pt;
     font-style: article;
   }
-  button.btn{
-    margin-bottom: 30pt;
+  button{
+    margin-bottom: 20pt;
     margin-top: 20pt;
     margin-left: 50pt;
-
   }
   table{
     margin-top: 50pt;
@@ -62,9 +61,9 @@
                   {{csrf_field()}}
 
                   <div class="form-group">
-                    <label for="id" class="col-form-label">Id:</label>
-                    <input name="id" type="text" class="form-control @error('id')is-invalid @enderror" id="id"placeholder="Masukkan Id" value="{{old('id')}}">
-                    @error('id')
+                    <label for="kode_document" class="col-form-label">Kode Document:</label>
+                    <input name="kode_document" type="text" class="form-control @error('kode_document')is-invalid @enderror" id="kode_document" placeholder="Masukkan Id" value="{{old('kode_document')}}">
+                    @error('kode_document')
                       <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
@@ -105,9 +104,9 @@
                     {{csrf_field()}}
 
                   <div class="form-group">
-                    <label for="id" class="col-form-label">Id:</label>
-                      <input name="id" type="text" class="form-control @error('id')is-invalid @enderror" id="id"placeholder="Masukkan Id" value="{{$dc->id}}">
-                            @error('id')
+                    <label for="kode_document" class="col-form-label">Kode Document:</label>
+                      <input name="kode_document" type="text" class="form-control @error('kode_document')is-invalid @enderror" id="kode_document"placeholder="Masukkan Id" value="{{$dc->kode_document}}">
+                            @error('kode_document')
                               <div class="invalid-feedback">{{$message}}</div>
                             @enderror
                   </div>
@@ -138,16 +137,16 @@
               <thead>
                 <tr>
                   <th >No</th>
-                  <th >Id</th>
+                  <th >Kode Document</th>
                   <th >Document</th>
-                  <th class="text-center">Aksi</th>
+                  <th >Aksi</th>
                 </tr>
               </thead>
               <tbody>
               @foreach($document as $dc)
                 <tr>
                   <th>{{$loop->iteration}}</th>
-                  <td>{{$dc->id}}</td>
+                  <td>{{$dc->kode_document}}</td>
                   <td>{{$dc->document}}</td>
                     <td class="text-center">
                         <a href="" class="btn btn-primary" data-toggle="modal" data-target="#editModal-{{$dc->id}}" data-whatever="@getbootstrap">Edit</a>
@@ -156,6 +155,14 @@
                 </tr>
               @endforeach
               </tbody>
+              <tfoot>
+                  <tr>
+                      <th>No</th>
+                      <th>Kode Document</th>
+                      <th>Document</th>
+                      <th>Aksi</th>
+                  </tr>
+              </tfoot>
             </table>
 
   </div>

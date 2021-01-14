@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipepenilaian11Table extends Migration
+class CreateDocument1Table extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateTipepenilaian11Table extends Migration
      */
     public function up()
     {
-        Schema::create('tipepenilaian11', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('tipe_penilaian');
+        Schema::create('document1', function (Blueprint $table) {
+            $table->id();
+            $table->char('kode_document');
+            $table->string('document');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateTipepenilaian11Table extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipepenilaian11');
+        Schema::dropIfExists('document1');
     }
 }

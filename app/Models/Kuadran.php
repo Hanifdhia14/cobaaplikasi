@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kuadran extends Model
 {
-    protected $table = 'kuadran11';
-    protected $fillable= ['id', 'kuadrna', 'start_date', 'end_date'];
+    protected $table = 'kuadran1';
+    protected $fillable= ['id','kode_kuadran', 'kuadran', 'start_date', 'end_date'];
 }

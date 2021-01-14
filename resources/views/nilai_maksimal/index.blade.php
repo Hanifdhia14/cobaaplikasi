@@ -19,11 +19,10 @@
     margin-left: 20pt;
     font-style: article;
   }
-  button.btn{
-    margin-bottom:30pt;
-    margin-top: 20pt;
+  button{
+    margin-top:10pt;
+    margin-bottom: 20pt;
     margin-left: 50pt;
-
   }
   table{
     margin-top: 50pt;
@@ -61,9 +60,9 @@
         {{csrf_field()}}
 
         <div class="form-group">
-          <label for="id" class="col-form-label">Id:</label>
-          <input name="id" type="text" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id" value="{{old('id')}}">
-          @error('id')
+          <label for="kode_nmax" class="col-form-label">Kode Nmax:</label>
+          <input name="kode_nmax" type="text" class="form-control @error('kode_nmax')is-invalid @enderror" id="kode_nmax" placeholder="Masukkan Kode Nmax" value="{{old('kode_nmax')}}">
+          @error('kode_nmax')
             <div class="invalid-feedback">{{$message}}</div>
           @enderror
         </div>
@@ -104,8 +103,8 @@
       {{csrf_field()}}
 
       <div class="form-group">
-                <label for="id" class="col-form-label">Id:</label>
-      <input name="id" type="text" class="form-control @error('id')is-invalid @enderror" id="id" placeholder="Masukkan Id"value="{{$nmax->id}}" >
+        <label for="kode_nmax" class="col-form-label">Kode Nmax:</label>
+      <input name="kode_nmax" type="text" class="form-control @error('kode_nmax')is-invalid @enderror" id="kode_nmax" placeholder="Masukkan Id"value="{{$nmax->kode_nmax}}" >
       </div>
 
       <div class="form-group">
@@ -130,7 +129,7 @@
       <thead>
       <tr>
         <th >No</th>
-        <th >Id</th>
+        <th >Kode Nmax</th>
         <th >Nilai Maksimal</th>
         <th >Aksi</th>
       </tr>
@@ -139,7 +138,7 @@
       @foreach ($nilai_maksimal as $nmax)
       <tr>
         <th>{{$loop-> iteration}}</th>
-        <td>{{$nmax->id}}</td>
+        <td>{{$nmax->kode_nmax}}</td>
         <td >{{$nmax->nilai_maksimal}}</td>
         <td >
             <a href="" class="btn btn-primary"data-toggle="modal" data-target="#editModal-{{$nmax->id}}" data-whatever="@getbootstrap">Edit</a>
@@ -148,6 +147,14 @@
       </tr>
       @endforeach
       </tbody>
+      <tfoot>
+          <tr>
+              <th>No</th>
+              <th>Kode Nmax</th>
+              <th>Nilai Maksimal</th>
+              <th>Aksi</th>
+          </tr>
+      </tfoot>
       </table>
 
 

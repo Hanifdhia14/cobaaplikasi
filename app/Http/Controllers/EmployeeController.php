@@ -49,15 +49,16 @@ class EmployeeController extends Controller
             'email' => 'required',
         ]);
 
-        DB::table('employee')->insert([
-     'nik' => $request->nik,
-     'nama' => $request->nama,
-     'level' => $request->level,
-     'jabatan' => $request->jabatan,
-     'unit_kerja' => $request->unit_kerja,
-     'wilayah' => $request->wilayah,
-     'email' => $request->email
-      ]);
+        $employee = new employee;
+        $employee-> nik = $request-> nik;
+        $employee-> nama = $request-> nama;
+        $employee-> level = $request-> level;
+        $employee-> jabatan = $request-> jabatan;
+        $employee-> unit_kerja = $request-> unit_kerja;
+        $employee-> wilayah = $request-> wilayah;
+        $employee-> email = $request-> email;
+        $employee->save();
+
         // alihkan halaman ke halaman pegawai
         return redirect('employee.index')-> with('status', 'Data Employee Telah Berhasil Ditambahkan!');
     }
@@ -81,17 +82,36 @@ class EmployeeController extends Controller
      */
     public function edit(Request $request)
     {
+        $request->validate([
+          'nik' => 'required',
+          'nama' => 'required',
+          'level' => 'required',
+          'jabatan' => 'required',
+          'unit_kerja' => 'required',
+          'wilayah' => 'required',
+          'email' => 'required',
+      ]);
         if ($request->isMethod('POST')) {
             $empl = $request->all();
         }
-        $employee=DB::table('employee')->where('nik', $request->nik)->update([
-          'nik' => $request->nik,
-          'nama' => $request->nama,
-          'level' => $request->level,
-          'jabatan' => $request->jabatan,
-          'unit_kerja' => $request->unit_kerja,
-          'wilayah' => $request->wilayah,
-          'email' => $request->email,
+        //$employee=DB::table('employee')->where('nik', $request->nik)->update([
+        // 'nik' => $request->nik,
+        //'nama' => $request->nama,
+        //   'level' => $request->level,
+        //  'jabatan' => $request->jabatan,
+        //   'unit_kerja' => $request->unit_kerja,
+        //   'wilayah' => $request->wilayah,
+        // 'email' => $request->email,
+        //]);
+        Employee::where('nik', $request->nik)
+         ->update([
+           'nik' => $request->nik,
+           'nama' => $request->nama,
+           'level' => $request->level,
+           'jabatan' => $request->jabatan,
+           'unit_kerja' => $request->unit_kerja,
+           'wilayah' => $request->wilayah,
+           'email' => $request->email
        ]);
         return redirect('employee.index')-> with('status', 'Data Employee Telah Berhasil Diubah!');
     }

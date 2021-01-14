@@ -40,15 +40,14 @@ class TipepenilaianController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required',
+            'kode_nilai' => 'required',
             'tipe_penilaian' => 'required',
         ]);
-        //insert data ke table Tipe penilaian
-        DB::table('tipepenilaian11')->insert([
-         'id' => $request->id,
-         'tipe_penilaian' => $request->tipe_penilaian,
 
-  ]);
+        $tipenilai = new tipenilai;
+        $tipenilai-> kode_nilai = $request-> kode_nilai;
+        $tipenilai-> tipe_penilaian = $request-> tipe_penilaian;
+        $tipenilai->save();
         // alihkan halaman ke halaman Tipe Penilaian
         return redirect('tipe_penilaian.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Diambahkan!');
     }
@@ -70,14 +69,20 @@ class TipepenilaianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Request $request, Tipenilai $tipenilai)
     {
+        $request->validate([
+          'kode_nilai' => 'required',
+          'tipe_penilaian' => 'required',
+      ]);
         if ($request->isMethod('POST')) {
             $tp = $request->all();
         }
-        $tipe_penilaian=DB::table('tipepenilaian11')->where('id', $request->id)->update([
-       'id' => $request->id,
-       'tipe_penilaian' => $request->tipe_penilaian,
+
+        Tipenilai::where('kode_nilai', $request->kode_nilai)
+         ->update([
+           'kode_nilai'=> $request-> kode_nilai,
+           'tipe_penilaian'=> $request-> tipe_penilaian
        ]);
         return redirect('tipe_penilaian.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Diubah!');
     }
@@ -103,7 +108,7 @@ class TipepenilaianController extends Controller
     public function destroy($id)
     {
         // menghapus data tipe_penilaian berdasarkan id yang dipilih
-        DB::table('tipepenilaian11')->where('id', $id)->delete();
+        DB::table('tipenilai1')->where('id', $id)->delete();
 
         // alihkan halaman ke halaman tipe_penilaian
         return redirect('tipe_penilaian.index')-> with('status', 'Data Tipe Penilaian Telah Berhasil Dihapuskan!');
