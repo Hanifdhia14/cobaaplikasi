@@ -128,8 +128,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <ul class="treeview-menu">
                         <h6 >Custom Utilities:</h6>
-                      <li><a href="{{url('user.settarget_user.index')}}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
-                      <li><a href="{{url('user.settarget_user.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
+                      <li><a href="{{url('user.target_kerja.index')}}" class="collapse-item"><i  class="fa fa-circle-o"></i> Setting Kerja</a></li>
+                      <li><a href="{{url('user.nilai_target.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Validasi Kerja</a></li>
                     </ul>
                 </div>
             </div>
@@ -144,7 +144,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#userPages"
+            <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#userPages"
                 aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Report Target</span>
@@ -154,7 +154,7 @@
                   <ul class="treeview-menu">
 
                     <h6>Monitoring Screens:</h6>
-                    <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
+                    <li><a href="{{url('user.repotuser.index')}}" class="collapse-item"><i class="fa fa-circle-o"></i> Nilai Target</a></li>
                     <li><a href="#" class="collapse-item"><i class="fa fa-circle-o"></i>#</a></li>
 
                   </ul>

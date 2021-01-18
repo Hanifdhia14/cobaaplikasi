@@ -80,13 +80,24 @@ Route::get('ph', function () {
     Route::get('user.userhome', 'user.UserhomeController@index');
 
 // User Interface
-// Settanget
-Route::get('user.settarget_user.index', 'SettargetController@index');
-Route::POST('user.settarget_user.index', 'SettargetController@store');
-Route::get('user.settarget_user.index.destroy{id_set_target}', 'SettargetController@destroy');
-Route::match(['get', 'POST'], 'user.settarget_user.index', 'SettargetController@edit');
+// target kerja
+Route::get('user.target_kerja.index', 'Target_kerjaController@index');
+Route::POST('user.target_kerja.index', 'Target_kerjaController@store');
+Route::get('user.target_kerja.index.destroy{id_set_target}', 'Target_kerjaController@destroy');
+//Route::match(['get', 'POST'], 'user.settarget_user.index', 'SettargetController@edit');
 
-//Validasi Target
-Route::get('user.valtarget.index', 'ValtargetController@index');
-// Nilai_target
+//Nilai Target
 Route::get('user.nilai_target.index', 'Nilai_targetController@index');
+//Report user
+Route::get('user.repotuser.index', 'RepotuserController@index');
+
+
+
+
+// Admin Interface
+
+// Settarget kerja
+
+//Nilai Target
+
+//Approval Target

@@ -44,10 +44,10 @@ class DocumentController extends Controller
           'document' => 'required',
       ]);
         // insert data ke table document
-        $dokumen = new dokumen;
-        $dokumen-> kode_document = $request-> kode_document;
-        $dokumen-> document = $request-> document;
-        $dokumen->save();
+        $document = new document;
+        $document-> kode_document = $request-> kode_document;
+        $document-> document = $request-> document;
+        $document->save();
         // alihkan halaman ke halaman document
         return redirect('document.index')-> with('status', 'Data document Telah Berhasil Diubah!');
     }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Settarget;
+use App\Models\Target_kerja;
 
 use App\Models\Kuadran;
 use App\Models\Kpi;
@@ -15,19 +15,18 @@ use App\Models\Document;
 use App\Models\Tipenilai;
 use App\Models\Nilaimaksimal;
 
-class SettargetController extends Controller
+class Target_kerjaController extends Controller
 {
     public function index()
     {
-        $set_target= Settarget::all();
+        $set_target= Target_kerja::all();
         $kuadrans= Kuadran::select('id', 'kuadran')->get();
-        $kpis= Kpi::select('id', 'nama_kpi')->get();
+        $kpis= Kpi::select('id', 'nama_kpi', 'description', 'polaritas', 'parameter')->get();
         $satuans= Satuan::select('id', 'satuan')->get();
         $dkms= Document::select('id', 'document')->get();
         $tipe_nilai= Tipenilai::select('id', 'tipe_penilaian')->get();
         $nmaxs= Nilaimaksimal::select('id', 'nilai_maksimal')->get();
-
-        return view('user.settarget_user.index', compact('kuadrans', 'kpis', 'satuans', 'dkms', 'tipe_nilai', 'nmaxs', 'set_target'));
+        return view('user.target_kerja.index', compact('kuadrans', 'kpis', 'satuans', 'dkms', 'tipe_nilai', 'nmaxs', 'set_target'));
     }
 
 
@@ -42,7 +41,7 @@ class SettargetController extends Controller
 
     public function store(Request $request)
     {
-        $set_target = new settarget;
+        $set_target = new target_kerja;
         $set_target -> set_kuadran = $request-> set_kuadran;
         $set_target -> set_kpi = $request-> set_kpi;
         $set_target -> set_satuan = $request-> set_satuan;
@@ -78,17 +77,17 @@ class SettargetController extends Controller
         $set_target -> target_absolut = $request-> target_absolut;
         $set_target -> bobot = $request-> bobot;
         $set_target -> save();
+        return redirect('user.target_kerja.index')-> with('status', 'Data Setting Target Kerja Berhasil Ditambahkan!');
 
         // alihkan halaman ke Set_target_user
-        return redirect('user.settarget_user.index')-> with('status', 'Data Setting Target Kerja Berhasil Ditambahkan!');
     }
 
-    public function edit(Request $request, Settarget $set_target)
+    public function edit(Request $request, Target_kerja $set_target)
     {
         if ($request->isMethod('POST')) {
             $setter = $request->all();
         }
-        Settarget::where('id_set_target')-> update([
+        Target_kerja::where('id_set_target')-> update([
         'set_kuadran'=> $request-> set_kuadran,
         'set_kpi' =>$request-> set_kpi,
         'set_satuan' =>$request-> set_satuan,
@@ -119,17 +118,16 @@ class SettargetController extends Controller
         'semester2' => $request-> tgl_s2,
         'tahun' => $request-> target_tahun_unit,
         'target_absolut'=> $request-> target_absolut,
-        'bobot'=> $request-> bobot
-    ]);
-        return redirect('user.settarget_user.index')-> with('status', 'Data Setting Traget Telah Berhasil Diubah!');
+        'bobot'=> $request-> bobot]);
+        return redirect('user.target_kerja.index')-> with('status', 'Data Setting Traget Telah Berhasil Diubah!');
     }
 
 
     public function destroy($id_set_target)
     {
         DB::table('set_target_user')->where('id_set_target', $id_set_target)->delete();
+        return redirect('user.target_kerja.index')-> with('status', 'Data Setting Traget Telah Berhasil Dihapuskan!');
 
         // alihkan halaman ke halaman kuadran
-        return redirect('user.settarget_user.index')-> with('status', 'Data Setting Traget Telah Berhasil Dihapuskan!');
     }
 }
