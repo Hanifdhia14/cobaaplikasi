@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>E-AKIO</title>
+    <link rel="shortcut icon" href="http://156.67.218.233/superior/assets/images/logobaru2.jpg">
 
     <!-- Custom fonts for this template-->
     <link href="sbadmin2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +20,6 @@
     <!-- Custom styles for this template-->
     <link href="sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-
 
 </head>
 

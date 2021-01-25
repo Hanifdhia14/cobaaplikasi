@@ -233,7 +233,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="{{Route('logout')}}" onclick="return confirm('Apakah anda yakin ingin Keluar ?')">
+            <a class="nav-link" href=" Route('logout')" onclick="return confirm('Apakah anda yakin ingin Keluar ?')">
                 <i class="fas fa-sign-out-alt "></i>
                 <span>Log Out</span></a>
         </li>

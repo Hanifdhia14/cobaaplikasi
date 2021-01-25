@@ -18,9 +18,7 @@ Route::get('/main', function () {
 //Route::get('/main', 'HomeController@index');
 
 
-Route::get('ph', function () {
-    return view('auth.login');
-});
+
 
 
 
@@ -72,19 +70,15 @@ Route::get('ph', function () {
     Route::POST('hakakses.index.store', 'HakaksesController@store');
     Route::match(['get', 'POST'], 'hakakses.index.edit', 'HakaksesController@edit');
     Route::get('hakakses.index.destroy{id}', 'HakaksesController@destroy');
-//LOG-IN
-    Route::get('login', 'HakaksesController@login');
-    Route::POST('postlogin', 'HakaksesController@postlogin')->name('postlogin');
-    Route::get('logout', 'HakaksesController@logout')->name('logout');
-    //User
-    Route::get('user.userhome', 'user.UserhomeController@index');
+
+
 
 // User Interface
 // target kerja
 Route::get('user.target_kerja.index', 'Target_kerjaController@index');
 Route::POST('user.target_kerja.index', 'Target_kerjaController@store');
 Route::get('user.target_kerja.index.destroy{id_set_target}', 'Target_kerjaController@destroy');
-//Route::match(['get', 'POST'], 'user.settarget_user.index', 'SettargetController@edit');
+Route::match(['get', 'POST'], 'user.target_kerja.index.edit', 'Target_kerjaController@edit');
 
 //Nilai Target
 Route::get('user.nilai_target.index', 'Nilai_targetController@index');

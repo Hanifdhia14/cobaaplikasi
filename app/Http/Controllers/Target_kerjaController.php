@@ -85,40 +85,45 @@ class Target_kerjaController extends Controller
     public function edit(Request $request, Target_kerja $set_target)
     {
         if ($request->isMethod('POST')) {
-            $setter = $request->all();
+            $set = $request->all();
         }
-        Target_kerja::where('id_set_target')-> update([
-        'set_kuadran'=> $request-> set_kuadran,
-        'set_kpi' =>$request-> set_kpi,
-        'set_satuan' =>$request-> set_satuan,
-        'set_document' =>$request-> set_document,
-        'set_nmax' =>$request-> set_nmax,
-        'set_tp_nilai' =>$request-> set_tp_nilai,
-        'bln_januari' => $request-> target_01,
-        'bln_februari' => $request-> target_02,
-        'bln_maret' => $request-> target_03,
-        'bln_april' => $request-> target_04,
-        'bln_mei' => $request-> target_05,
-        'bln_juni' => $request-> target_06,
-        'bln_juli' => $request-> target_07,
-        'bln_agustus' => $request-> target_08,
-        'bln_september' => $request-> target_09,
-        'bln_oktober' => $request-> target_10,
-        'bln_november' => $request-> target_11,
-        'bln_desember' => $request-> target_12,
-        'qtr1' => $request-> target_q1,
-        'tgl_q1' => $request-> tgl_target_q1,
-        'qtr2' => $request-> target_q2,
-        'tgl_q2' => $request-> tgl_target_q3,
-        'qtr3' => $request-> target_q3,
-        'tgl_q3' => $request -> tgl_target_q3,
-        'qtr4' => $request-> target_q4,
-        'tgl_q4'=> $request-> tgl_target_q4,
-        'semester1' => $request-> tgl_s1,
-        'semester2' => $request-> tgl_s2,
-        'tahun' => $request-> target_tahun_unit,
-        'target_absolut'=> $request-> target_absolut,
-        'bobot'=> $request-> bobot]);
+        Target_kerja::where('id_set_target', $request->id_set_target)
+      ->update([
+       'set_kuadran' => $request-> set_kuadran,
+       'set_kpi' => $request-> set_kpi,
+       'set_satuan' => $request-> set_satuan,
+       'set_document' => $request-> set_document,
+       'set_nmax' => $request-> set_nmax,
+       'set_tp_nilai' => $request-> set_tp_nilai,
+       'bln_januari' => $request-> terget_01,
+       'bln_februari' => $request-> target_02,
+       'bln_maret' => $request-> target_03,
+       'bln_april' => $request-> target_04,
+       'bln_mei' => $request-> target_05,
+       'bln_juni' => $request-> target_06,
+       'bln_juli' => $request-> target_07,
+       'bln_agustus' => $request-> target_08,
+       'bln_september' => $request-> target_09,
+       'bln_oktober' => $request-> target_10,
+       'bln_november' => $request-> target_11,
+       'bln_desember' => $request-> target_12,
+       'qtr1' => $request-> target_q1,
+       'tgl_q1' => $request-> tgl_target_q1,
+       'qtr2' => $request-> target_q2,
+       'tgl_q2' => $request-> tgl_target_q2,
+       'qtr3' => $request-> target_q3,
+       'tgl_q3' => $request-> tgl_target_q3,
+       'qtr4' => $request-> target_q4,
+       'tgl_q4' => $request-> tgl_target_q4,
+       'semester1' => $request-> target_semester1,
+       'tgl_s1' => $request-> tgl_target_semester1,
+       'semester2' => $request-> target_semester2,
+       'tgl_s2' => $request-> tgl_target_semester2,
+       'tahun' => $request-> target_tahun_unit,
+       'tgl_thn' => $request-> tgl_target_tahun_unit,
+       'target_absolut' => $request-> target_absolut,
+       'bobot' => $request-> bobot,
+      ]);
         return redirect('user.target_kerja.index')-> with('status', 'Data Setting Traget Telah Berhasil Diubah!');
     }
 
